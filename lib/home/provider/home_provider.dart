@@ -12,12 +12,12 @@ class HomeProvider extends ChangeNotifier {
   String? todoColor;
 
   List<TaskColor> taskColor = [
-    TaskColor(const Color(0xff3581B8), false),
-    TaskColor(const Color(0xffFD5D5D), false),
-    TaskColor(const Color(0xff0C9463), false),
-    TaskColor(const Color(0xffF69E7B), false),
-    TaskColor(const Color(0xffC9D7F8), false),
-    TaskColor(const Color(0xff8D6B94), false),
+    TaskColor(const Color(0xff6927FF), false),
+    TaskColor(const Color(0xffFFD581), false),
+    TaskColor(const Color(0xffD3EBCD), false),
+    TaskColor(const Color(0xff516BEB), false),
+    TaskColor(const Color(0xff80ED99), false),
+    TaskColor(const Color(0xffFFBED8), false),
   ];
 
   HomeProvider() {

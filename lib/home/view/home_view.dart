@@ -35,7 +35,7 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               floatingActionButton: FloatingActionButton(
-                backgroundColor: Colors.black,
+                backgroundColor: const Color(0xff2D31FA),
                 child: const Icon(
                   Icons.arrow_forward,
                   size: 25.0,

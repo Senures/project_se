@@ -77,17 +77,18 @@ class TaskList extends StatelessWidget {
                           },
                           child: ListTile(
                             leading: dp.tasklist[i].onTap
-                                ? const Icon(
-                                    FontAwesomeIcons.squareCheck,
-                                    color: Colors.black,
-                                  )
-                                : Icon(
-                                    Icons.circle,
-                                    color: HexColor(model.taskColor!),
+                                ? const Icon(FontAwesomeIcons.squareCheck,
+                                    color: Colors.black)
+                                : const Icon(
+                                    FontAwesomeIcons.minus,
+                                    color: Colors.grey,
                                   ),
                             title: Text(
                               dp.tasklist[i].task!,
                               style: TextStyle(
+                                  decoration: dp.tasklist[i].onTap
+                                      ? TextDecoration.none
+                                      : TextDecoration.lineThrough,
                                   color: dp.tasklist[i].onTap
                                       ? Colors.black
                                       : Colors.grey),

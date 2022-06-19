@@ -48,7 +48,7 @@ class GridListHome extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: const [
-                              ColorCircle(color: Color(0xffF5BA47))
+                              ColorCircle(color: Color(0xff94B3FD))
                             ],
                           ),
                           Row(
@@ -106,7 +106,6 @@ class GridListHome extends StatelessWidget {
                                   color:
                                       HexColor(hp.todolist[index].taskColor!),
                                 )
-                               
                               ],
                             ),
                             Row(

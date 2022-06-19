@@ -69,7 +69,7 @@ taskDialog(BuildContext context, DetailProvider dp) {
           actions: [
             TextButton(
                 onPressed: (() {
-                  dp.cleartaskText();
+                  //dp.cleartaskText();
                   Navigator.pop(context, false);
                 }),
                 child: const Text(
@@ -78,7 +78,7 @@ taskDialog(BuildContext context, DetailProvider dp) {
                 )),
             TextButton(
                 onPressed: (() {
-                  dp.createTaskCollection();
+                  dp.createTask();
                 }),
                 child: const Text("Create",
                     style: TextStyle(color: Color(0xff0C9463))))

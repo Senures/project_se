@@ -8,12 +8,16 @@ class DetailProvider extends ChangeNotifier {
   User? user = FirebaseAuth.instance.currentUser; //anlık kullanıcı
   bool isLoading = true;
   BuildContext context;
+  double initialValue = 0;
 
   List<TaskModel> tasklist = [];
   bool onTap = false;
+  var tamamlanmayan;
+  List<bool> liste = [];
 
   DetailProvider(this.todoId, this.context) {
     getTaskCollection();
+    // getTotalTask();
     //createTaskCollection();
   }
 
@@ -34,7 +38,7 @@ class DetailProvider extends ChangeNotifier {
       "create_date": DateTime.now(),
       "onTap": false
     });
-
+    taskcontroller!.clear();
     Navigator.pop(context);
   }
 
@@ -50,13 +54,22 @@ class DetailProvider extends ChangeNotifier {
         .collection("tasks")
         .snapshots()
         .listen((event) {
+      tasklist.clear();
       for (var element in event.docs) {
         tasklist.add(TaskModel(
             task: element.data()["task"],
             onTap: element.data()["onTap"],
             taskId: element.id));
-        notifyListeners();
       }
+      var tamamlanan =
+          tasklist.where((element) => element.onTap == true).length.toString();
+      initialValue = tasklist.isEmpty
+          ? 0
+          : (double.parse(tamamlanan) * 100) / tasklist.length;
+
+      /* print("UZUNLUK " +
+          tasklist.where((element) => element.onTap == true).length.toString());  */
+      notifyListeners();
     });
 
     isLoading = false;
@@ -86,11 +99,16 @@ class DetailProvider extends ChangeNotifier {
       print("oluşmadı görev");
     }
   }
+/* 
+  getTotalTask() {
+    var uzunluk = tasklist.where((element) => element.onTap == true).length;
+    print("dogruların uzunlugu : " + uzunluk.toString());
+  } */
 
-  cleartaskText() {
+  /*  cleartaskText() {
     taskcontroller!.clear();
     notifyListeners();
-  }
+  } */
 
   clearToDo(String taskId) async {
     await FirebaseFirestore.instance

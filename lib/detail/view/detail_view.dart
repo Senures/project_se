@@ -8,6 +8,7 @@ import 'package:se_to_do/widget/color_circle.dart';
 import 'package:se_to_do/widget/color_utils.dart';
 import 'package:se_to_do/widget/task_dialog.dart';
 import 'package:se_to_do/widget/task_list.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import '../provider/detail_provider.dart';
 
@@ -33,6 +34,9 @@ class DetailView extends StatelessWidget {
             return Scaffold(
               backgroundColor: Colors.white,
               appBar: AppBar(
+                actionsIconTheme:IconThemeData(
+
+                ),
                 elevation: 0.0,
                 leading: IconButton(
                     onPressed: () {
@@ -42,8 +46,10 @@ class DetailView extends StatelessWidget {
                       Icons.close,
                       size: 35.0,
                     )),
-                actions: [
-                  PopupMenuButton(
+                actions: const [
+
+                  Icon(FontAwesomeIcons.trash)
+                  /*  PopupMenuButton(
                       icon: const Icon(
                         Icons.settings,
                         size: 35.0,
@@ -56,15 +62,16 @@ class DetailView extends StatelessWidget {
                               child: const Text("Delete"),
                               value: 1,
                             ),
-                          ])
+                          ]) */
                 ],
               ),
               body: dp.isLoading
                   ? const Center(
-                      child: CircularProgressIndicator(),
+                      child: Circular(),
                     )
                   : SingleChildScrollView(
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
@@ -74,11 +81,27 @@ class DetailView extends StatelessWidget {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  ColorCircle(
-                                    color: HexColor(model.taskColor!),
+                                  SleekCircularSlider(
+                                    min: 0,
+                                    max: 100,
+                                    onChangeEnd: (value) {
+                                      print("bitti");
+                                    },
+                                    appearance: CircularSliderAppearance(
+                                        customColors: CustomSliderColors(
+                                          trackColor: Colors.grey.shade300,
+                                        ),
+                                        size: 70.0,
+                                        customWidths: CustomSliderWidths(
+                                            trackWidth: 10.0,
+                                            progressBarWidth: 8)),
+                                    initialValue: dp.initialValue,
                                   ),
+                                  /*  ColorCircle(
+                                    color: HexColor(model.taskColor!),
+                                  ), */
                                   const SizedBox(
-                                    width: 10.0,
+                                    width: 15.0,
                                   ),
                                   Column(
                                     crossAxisAlignment:
@@ -102,20 +125,22 @@ class DetailView extends StatelessWidget {
                               ),
                             ),
                           ),
-                          dp.isLoading
-                              ? const Circular()
-                              : TaskList(
-                                  todoId: todoId,
-                                  model: model,
-                                )
+                          dp.tasklist.isNotEmpty
+                              ? dp.isLoading
+                                  ? const Circular()
+                                  : TaskList(
+                                      todoId: todoId,
+                                      model: model,
+                                    )
+                              : Container(child: Text("henüz liste boş"))
                         ],
                       ),
                     ),
               floatingActionButton: FloatingActionButton(
-                backgroundColor: const Color(0xff0C9463),
+                backgroundColor: const Color(0xff2D31FA),
                 child: const Icon(
                   Icons.add,
-                  size: 25.0,
+                  size: 30.0,
                 ),
                 onPressed: () {
                   taskDialog(context, dp);
