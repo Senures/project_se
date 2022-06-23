@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Circular extends StatelessWidget {
@@ -7,7 +6,9 @@ class Circular extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: CircularProgressIndicator(backgroundColor: Color(0xffF4E06D)),
+      child: CircularProgressIndicator(
+      
+        backgroundColor: Color(0xff6807F9)),
     );
   }
 }

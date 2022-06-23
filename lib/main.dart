@@ -1,24 +1,23 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:se_to_do/splash_screen.dart';
 
 
 Future<void> _messageHandler(RemoteMessage message) async {
-  print('background message ${message.notification!.body}');
+
 }
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_messageHandler);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -31,14 +30,13 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     messaging = FirebaseMessaging.instance;
     messaging.getToken().then((value) {
-      print("TOKENNNNNNNNNN " + value.toString());
+     
     });
      FirebaseMessaging.onMessage.listen((RemoteMessage event) {
-        print("message recieved");
-        print(event.notification!.body);
+      
     });
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
-      print('Message clicked!');
+   
     });
   }
 
@@ -55,7 +53,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

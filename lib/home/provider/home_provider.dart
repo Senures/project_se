@@ -10,58 +10,33 @@ class HomeProvider extends ChangeNotifier {
   User? user = FirebaseAuth.instance.currentUser; //anlık kullanıcı
   bool isLoading = true;
   String? todoColor;
+  List<TodoModel> todolist = [];
 
   List<TaskColor> taskColor = [
     TaskColor(const Color(0xff6927FF), false),
-    TaskColor(const Color(0xffFFD581), false),
-    TaskColor(const Color(0xffD3EBCD), false),
-    TaskColor(const Color(0xff516BEB), false),
-    TaskColor(const Color(0xff80ED99), false),
-    TaskColor(const Color(0xffFFBED8), false),
+    TaskColor(const Color(0xffFF449F), false),
+    TaskColor(const Color(0xffFEB139), false),
+    TaskColor(const Color(0xff64DFDF), false),
+    TaskColor(const Color(0xffBCEB3C), false),
+    TaskColor(const Color(0xffFCF876), false),
   ];
 
   HomeProvider() {
     getTodoList();
-    //clearTodo();
   }
 
-  List<TodoModel> todolist = [];
-
   setColor(int i) {
-    //taskColor[i].isSelected = !taskColor[i].isSelected;
     for (var element in taskColor) {
       if (element.colors == taskColor[i].colors) {
-        todoColor =
-            taskColor[i].colors.toString().split('(0xff')[1].split(')')[0];
+        todoColor = taskColor[i].colors.toString().split('(0xff')[1].split(')')[0];
         //burda color tipinde rengi stringe çevirdik
-        //firebase yüklerken string yükleyip çekerken de color olarak yansıtıyoruz dmi
+        //firebase yüklerken string yükleyip çekerken de color olarak yansıtıyoruz
         element.isSelected = !element.isSelected;
       } else {
         element.isSelected = false;
       }
     }
     notifyListeners();
-  }
-
-  createTask() {
-    if (categoryname!.text.isNotEmpty && todoColor != null) {
-      createTodoCollection();
-    } else {
-      print("task eklenmedi");
-    }
-
-    /*   print(categoryname?.text.isEmpty );
-    if (categoryname!.text.isNotEmpty) {
-      createTodoCollection();
-    } else {
-      print("aaaaaaa");
-    } */
-    notifyListeners();
-    /*  for (var element in taskColor) {
-      if (element.isSelected == true && categoryname!.text.isNotEmpty) {
-        createTodoCollection();
-      }
-    } */
   }
 
   createTodoCollection() async {
@@ -77,9 +52,18 @@ class HomeProvider extends ChangeNotifier {
     });
   }
 
+  createToDo() {
+    if (categoryname!.text.isNotEmpty && todoColor != null) {
+      createTodoCollection();
+    } else {
+     
+    }
+    notifyListeners();
+  }
+
   getTodoList() async {
     todolist.clear();
-    print('11 == ' + todolist.length.toString());
+
     notifyListeners();
     isLoading = true;
     FirebaseFirestore.instance
@@ -97,26 +81,18 @@ class HomeProvider extends ChangeNotifier {
             todoId: element.id));
       }
 
-      print('22 == ' + todolist.length.toString());
       notifyListeners();
     });
-
-    /* .get();
-    for (var element in veri.docs) {
-      todolist.add(TodoModel(
-          categoryName: element.data()["category_name"],
-          taskColor: element.data()["task_color"],
-          totalTask: element.data()["total_task"],
-          todoId: element.id));
-      // print(element.data()["category_name"]);böyle yazmak yerine keyleri bi modelde topladık
-    } */
 
     isLoading = false;
     notifyListeners();
   }
 
-  clearCategoryText() {
+  clearDialaog() {
     categoryname!.clear();
+    for (var element in taskColor) {
+      element.isSelected = false;
+    }
     notifyListeners();
   }
 }

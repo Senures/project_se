@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/home/view/home_view.dart';
 import 'package:se_to_do/widget/custom_snackbar.dart';
@@ -27,9 +26,9 @@ class LoginProvider with ChangeNotifier {
 
   loginEmail() async {
     if (formGlobalKey.currentState!.validate()) {
+      setIsLoading(true);
       try {
-        final credential =
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailcontroller!.text,
           password: passwordcontroller!.text,
         );
@@ -42,6 +41,7 @@ class LoginProvider with ChangeNotifier {
         );
         setIsLoading(false);
       } on FirebaseAuthException catch (e) {
+        setIsLoading(false);
         if (e.code == 'user-not-found') {
           customSnackbar(
               context: context,
@@ -66,12 +66,11 @@ class LoginProvider with ChangeNotifier {
               message:
                   'Geçersiz E-posta girdiniz. Lütfen bilgilerinizi kontrol ediniz.');
         }
-        setIsLoading(false);
       } catch (e) {
         setIsLoading(false);
-
-        print('MAIL GIRIS ERROR === ' + e.toString());
       }
     }
   }
+
+  tapToGmail() {}
 }

@@ -61,8 +61,9 @@ class GridListHome extends StatelessWidget {
                                 child: const Text(
                                   "CREATE",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xff0C9463)),
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xff2D31FA),
+                                  ),
                                 ),
                               )
                             ],

@@ -5,7 +5,7 @@ class RootButton extends StatelessWidget {
   final String text;
   final Color color;
 
-  RootButton(
+  const RootButton(
       {Key? key, required this.ontap, required this.text, required this.color})
       : super(key: key);
 

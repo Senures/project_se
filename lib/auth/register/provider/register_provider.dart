@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/auth/login/login_view.dart';
 import 'package:se_to_do/widget/custom_snackbar.dart';
@@ -30,7 +29,7 @@ class RegisterProvider extends ChangeNotifier {
     if (formGlobalKey.currentState!.validate()) {
       createUser();
     } else {
-      print("register olmadı");
+     
     }
   }
 
@@ -53,17 +52,17 @@ class RegisterProvider extends ChangeNotifier {
             type: 'error',
             message:
                 'Şifre çok zayıf. Lütfen şifrenizi daha güçlü bir şifre olarak giriniz.');
-        print('The password provided is too weak.');
+       
       } else if (e.code == 'email-already-in-use') {
         customSnackbar(
             context: context,
             type: 'error',
             message: 'Bu E-Posta için hesap zaten var.');
-        print('The account already exists for that email.');
+      
       }
     } catch (e) {
       setIsLoading(false);
-      print(e);
+    
     }
   }
 

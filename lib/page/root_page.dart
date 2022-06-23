@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:se_to_do/auth/login/login_view.dart';
 import 'package:se_to_do/auth/register/view/register_view.dart';
+import 'package:se_to_do/utils/const.dart';
 import 'package:se_to_do/widget/root_button.dart';
 
 class RootPageView extends StatelessWidget {
@@ -32,8 +33,8 @@ class RootPageView extends StatelessWidget {
                     ),
                   );
                 },
-                text: "Sign in",
-                color: const Color(0xff0C9463)),
+                text: ProjectText.signIn,
+                color: ProjectColors.signInColor),
             RootButton(
                 ontap: () {
                   Navigator.push<void>(
@@ -43,8 +44,8 @@ class RootPageView extends StatelessWidget {
                     ),
                   );
                 },
-                text: "Sign up",
-                color: const Color(0xffF5BA47))
+                text: ProjectText.signUp,
+                color: ProjectColors.signUpColor)
           ],
         ),
       ),

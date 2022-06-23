@@ -4,7 +4,7 @@ import 'package:se_to_do/home/view/home_view.dart';
 import 'package:se_to_do/page/root_page.dart';
 
 class SplashScreen extends StatefulWidget {
-  SplashScreen({Key? key})
+  const SplashScreen({Key? key})
       : super(
           key: key,
         );
@@ -17,8 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () async {
-      final userCredential = await FirebaseAuth.instance.currentUser;
+    Future.delayed(const Duration(seconds: 3), (){
+      final userCredential = FirebaseAuth.instance.currentUser;
       if (userCredential == null) {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const RootPageView()));
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
           height: size.height,
           child: Image.asset(
             "assets/logo.png",
-            width: 120.0,
+            width: 150.0,
           )),
     );
   }

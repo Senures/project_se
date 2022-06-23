@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:se_to_do/detail/provider/detail_provider.dart';
 import 'package:se_to_do/utils/const.dart';
-import 'package:se_to_do/widget/dialog_textformfield.dart';
 
-taskDialog(BuildContext context, DetailProvider dp) {
+
+editDialog(BuildContext context, DetailProvider dp, int i) {
   var size = MediaQuery.of(context).size;
   showDialog<bool>(
       context: context,
@@ -37,9 +37,26 @@ taskDialog(BuildContext context, DetailProvider dp) {
                       child: Text(ProjectText.enterTask,
                           style: ProjectTextStyles.titledialog),
                     ),
-                    DialogTextForm(
-                      dp.taskcontroller,
-                      maxLength: 100,
+                    TextFormField(
+                      maxLength: 15,
+                      onChanged: (value) {
+                       dp.value = value;
+                      },
+                  
+                      controller: dp.editcontroller,
+                      cursorColor: ProjectColors.fixColor,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1, color: ProjectColors.enabledBorder),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1, color: ProjectColors.fixColor),
+                            borderRadius: BorderRadius.circular(10),
+                          )),
                     )
                   ],
                 ),
@@ -57,7 +74,7 @@ taskDialog(BuildContext context, DetailProvider dp) {
                 )),
             TextButton(
                 onPressed: (() {
-                  dp.createTask();
+                  dp.editTask(dp.tasklist[i].taskId);
                 }),
                 child: Text(ProjectText.create,
                     style: ProjectTextStyles.createStyle))
@@ -65,7 +82,7 @@ taskDialog(BuildContext context, DetailProvider dp) {
         );
       }).then((value) {
     if (value == false) {
-   
+    
     }
   });
 }

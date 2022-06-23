@@ -4,8 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:se_to_do/detail/provider/detail_provider.dart';
 import 'package:se_to_do/model/to_do_model.dart';
-import 'package:se_to_do/widget/color_utils.dart';
+import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/widget/edit_dialog.dart';
 
+
+// ignore: must_be_immutable
 class TaskList extends StatelessWidget {
   String todoId;
   TodoModel model;
@@ -26,48 +29,31 @@ class TaskList extends StatelessWidget {
                 return Slidable(
                   key: ValueKey(i),
                   endActionPane: ActionPane(
-                    motion: ScrollMotion(),
-                    children: [
-                      SlidableAction(
-                        // An action can be bigger than the others.
-                        flex: 1,
-                        onPressed: (context) {},
-                        backgroundColor: Color(0xFF7BC043),
-                        foregroundColor: Colors.white,
-                        icon: Icons.archive,
-                        label: 'Archive',
-                      ),
-                      SlidableAction(
-                        onPressed: (context) {},
-                        backgroundColor: Color(0xFF0392CF),
-                        foregroundColor: Colors.white,
-                        icon: Icons.save,
-                        label: 'Save',
-                      ),
-                    ],
-                  ),
-                  startActionPane: ActionPane(
-                    dismissible: DismissiblePane(
-                      onDismissed: () {},
-                    ),
                     motion: const ScrollMotion(),
                     children: [
                       SlidableAction(
-                        label: "Delete",
-                        backgroundColor: Colors.red,
-                        icon: Icons.delete,
+                        flex: 1,
                         onPressed: (context) {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(SnackBar(content: Text("delete ")));
+                          editDialog(context, dp,i);
                         },
-                      )
+                        backgroundColor: ProjectColors.fixColor,
+                        foregroundColor: Colors.white,
+                        icon: FontAwesomeIcons.pencil,
+                        label: 'Edit',
+                      ),
+                      SlidableAction(
+                        onPressed: (context) {
+                          dp.deleteTask(dp.tasklist[i].taskId);
+                        },
+                        backgroundColor: ProjectColors.fixColor,
+                        foregroundColor: Colors.white,
+                        icon: FontAwesomeIcons.trash,
+                        label: 'Delete',
+                      ),
                     ],
                   ),
                   child: Column(
                     children: [
-                      const Divider(
-                        color: Colors.black26,
-                      ),
                       InkWell(
                           onTap: () {
                             dp.taskStatus(
@@ -93,23 +79,8 @@ class TaskList extends StatelessWidget {
                                       ? Colors.black
                                       : Colors.grey),
                             ),
-                          ) /*  Row(
-                          children: [
-                            dp.tasklist[i].onTap
-                                ? const Icon(FontAwesomeIcons.check)
-                                : Icon(Icons.add,
-                                    color:
-                                        dp.onTap ? Colors.black : Colors.grey),
-                            Text(
-                              dp.tasklist[i].task!,
-                              style: TextStyle(
-                                  color: dp.tasklist[i].onTap
-                                      ? Colors.black
-                                      : Colors.grey),
-                            ),
-                          ],
-                        ), */
-                          ),
+                          )),
+                      Divider(color: Colors.grey.shade300),
                     ],
                   ),
                 );
