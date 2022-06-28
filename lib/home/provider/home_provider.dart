@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/model/task_color.dart';
 import 'package:se_to_do/model/to_do_model.dart';
+import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/widget/snackbar_widget.dart';
 
 class HomeProvider extends ChangeNotifier {
   TextEditingController? categoryname = TextEditingController();
@@ -28,7 +30,8 @@ class HomeProvider extends ChangeNotifier {
   setColor(int i) {
     for (var element in taskColor) {
       if (element.colors == taskColor[i].colors) {
-        todoColor = taskColor[i].colors.toString().split('(0xff')[1].split(')')[0];
+        todoColor =
+            taskColor[i].colors.toString().split('(0xff')[1].split(')')[0];
         //burda color tipinde rengi stringe çevirdik
         //firebase yüklerken string yükleyip çekerken de color olarak yansıtıyoruz
         element.isSelected = !element.isSelected;
@@ -52,11 +55,12 @@ class HomeProvider extends ChangeNotifier {
     });
   }
 
-  createToDo() {
+  createToDo(BuildContext context) {
     if (categoryname!.text.isNotEmpty && todoColor != null) {
       createTodoCollection();
     } else {
-     
+      snackBarCustom(
+          context, "Please fill in completely!", ProjectColors.fabButonColor);
     }
     notifyListeners();
   }

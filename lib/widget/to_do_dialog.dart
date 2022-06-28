@@ -88,7 +88,7 @@ toDocreateDialog(BuildContext context, HomeProvider hp) {
                     style: ProjectTextStyles.cancelStyle)),
             TextButton(
                 onPressed: (() {
-                  hp.createToDo();
+                  hp.createToDo(context);
                   hp.clearDialaog();
                   Navigator.pop(context);
                 }),

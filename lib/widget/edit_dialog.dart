@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:se_to_do/detail/provider/detail_provider.dart';
 import 'package:se_to_do/utils/const.dart';
 
-
 editDialog(BuildContext context, DetailProvider dp, int i) {
+  dp.dialogInit(dp.tasklist[i].task!);
   var size = MediaQuery.of(context).size;
   showDialog<bool>(
       context: context,
@@ -38,12 +38,13 @@ editDialog(BuildContext context, DetailProvider dp, int i) {
                           style: ProjectTextStyles.titledialog),
                     ),
                     TextFormField(
-                      maxLength: 15,
-                      onChanged: (value) {
-                       dp.value = value;
-                      },
-                  
+                      //maxLength: 15,
+                      /*      onChanged: (value) {
+                        dp.value = value;
+                      }, */
                       controller: dp.editcontroller,
+
+                      //  controller: dp.editcontroller,
                       cursorColor: ProjectColors.fixColor,
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -75,14 +76,14 @@ editDialog(BuildContext context, DetailProvider dp, int i) {
             TextButton(
                 onPressed: (() {
                   dp.editTask(dp.tasklist[i].taskId);
+                  // dp.editTask(dp.tasklist[i].taskId);
+                  Navigator.pop(context);
                 }),
                 child: Text(ProjectText.create,
                     style: ProjectTextStyles.createStyle))
           ],
         );
       }).then((value) {
-    if (value == false) {
-    
-    }
+    if (value == false) {}
   });
 }

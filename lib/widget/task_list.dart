@@ -7,11 +7,11 @@ import 'package:se_to_do/model/to_do_model.dart';
 import 'package:se_to_do/utils/const.dart';
 import 'package:se_to_do/widget/edit_dialog.dart';
 
-
 // ignore: must_be_immutable
 class TaskList extends StatelessWidget {
   String todoId;
   TodoModel model;
+
   TaskList({Key? key, required this.todoId, required this.model})
       : super(key: key);
 
@@ -34,9 +34,9 @@ class TaskList extends StatelessWidget {
                       SlidableAction(
                         flex: 1,
                         onPressed: (context) {
-                          editDialog(context, dp,i);
+                          editDialog(context, dp, i);
                         },
-                        backgroundColor: ProjectColors.fixColor,
+                        backgroundColor: ProjectColors.fabButonColor,
                         foregroundColor: Colors.white,
                         icon: FontAwesomeIcons.pencil,
                         label: 'Edit',
@@ -70,7 +70,9 @@ class TaskList extends StatelessWidget {
                                     color: Colors.grey,
                                   ),
                             title: Text(
-                              dp.tasklist[i].task!,
+                              dp.tasklist[i].task == null
+                                  ? "sfgfg"
+                                  : dp.tasklist[i].task.toString(),
                               style: TextStyle(
                                   decoration: dp.tasklist[i].onTap
                                       ? TextDecoration.none

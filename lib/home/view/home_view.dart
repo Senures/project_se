@@ -7,6 +7,7 @@ import 'package:se_to_do/utils/const.dart';
 import 'package:se_to_do/widget/circularprogress.dart';
 import 'package:se_to_do/widget/fab_buton.dart';
 import 'package:se_to_do/widget/gridlist_home.dart';
+import 'package:se_to_do/widget/to_do_dialog.dart';
 import '../provider/home_provider.dart';
 
 class HomeView extends StatelessWidget {
@@ -22,7 +23,7 @@ class HomeView extends StatelessWidget {
           return Consumer<HomeProvider>(builder: (context, hp, child) {
             return Scaffold(
               body: hp.isLoading
-                  ? const Circular()
+                  ? const LoadingCircular()
                   : SafeArea(
                       child: SingleChildScrollView(
                         child: Column(
@@ -36,12 +37,16 @@ class HomeView extends StatelessWidget {
                               ),
                             ),
                             hp.isLoading
-                                ? const Circular()
+                                ? const LoadingCircular()
                                 : const GridListHome()
                           ],
                         ),
                       ),
                     ),
+              /*       floatingActionButton: FabButton(() {
+                 
+                  toDocreateDialog(context, hp);
+                }, FontAwesomeIcons.plus, ProjectColors.fabButonColor) */
               floatingActionButton: FabButton(() async {
                 await FirebaseAuth.instance.signOut();
                 Navigator.pushAndRemoveUntil<void>(

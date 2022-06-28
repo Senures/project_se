@@ -2,26 +2,30 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:se_to_do/model/task_model.dart';
-
+import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/widget/snackbar_widget.dart';
 
 class DetailProvider extends ChangeNotifier {
   final String todoId; //sabit id o yüzden final
-  TextEditingController? taskcontroller =
-      TextEditingController(text: "initialvalue");
-  String? value = "";
-  TextEditingController? editcontroller = TextEditingController();
+  TextEditingController? taskcontroller = TextEditingController();
+  String? value;
+  TextEditingController? editcontroller;
   User? user = FirebaseAuth.instance.currentUser; //anlık kullanıcı
   bool isLoading = true;
   BuildContext context;
   double initialValue = 0;
   int total = 0;
+  TextEditingController? ec;
 
   List<TaskModel> tasklist = [];
   bool onTap = false;
 
   List<bool> liste = [];
 
-  DetailProvider(this.todoId, this.context) {
+  DetailProvider(
+    this.todoId,
+    this.context,
+  ) {
     getTaskCollection();
   }
 
@@ -99,8 +103,36 @@ class DetailProvider extends ChangeNotifier {
     if (taskcontroller!.text.isNotEmpty) {
       createTaskCollection();
     } else {
-     
+      snackBarCustom(
+          context, "Please fill in completely!", ProjectColors.fabButonColor);
     }
+    notifyListeners();
+  }
+
+  editTask(String taskId) {
+    if (editcontroller!.text.isNotEmpty) {
+      updateTask(taskId);
+    } else {
+      snackBarCustom(
+          context, "Please fill in completely!", ProjectColors.fabButonColor);
+    }
+    notifyListeners();
+  }
+
+  dialogInit(String task) {
+    editcontroller = TextEditingController(text: task);
+  }
+
+  updateTask(String taskId) {
+    var newTask = FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .collection("to_do")
+        .doc(todoId)
+        .collection("tasks")
+        .doc(taskId);
+    newTask.update({"task": editcontroller!.text});
+    notifyListeners();
   }
 
   deleteToDo(String todoId) async {
@@ -115,7 +147,6 @@ class DetailProvider extends ChangeNotifier {
   }
 
   deleteTask(String taskId) async {
-   
     await FirebaseFirestore.instance
         .collection('users')
         .doc(user!.uid)
@@ -125,19 +156,6 @@ class DetailProvider extends ChangeNotifier {
         .doc(taskId)
         .delete();
 
-    notifyListeners();
-  }
-
-  editTask(String taskId) {
-    tasklist.clear();
-    var newTask = FirebaseFirestore.instance
-        .collection("users")
-        .doc(user!.uid)
-        .collection("to_do")
-        .doc(todoId)
-        .collection("tasks")
-        .doc(taskId);
-    newTask.update({"task": value});
-    notifyListeners();
+    //notifyListeners();
   }
 }

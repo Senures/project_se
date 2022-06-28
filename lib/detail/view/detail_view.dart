@@ -59,88 +59,75 @@ class DetailView extends StatelessWidget {
                   ],
                 ),
                 body: dp.isLoading
-                    ? const Circular()
-                    : SingleChildScrollView(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 10.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15.0),
-                                    child: SleekCircularSlider(
-                                      min: 0,
-                                      max: 100,
-                                      onChangeEnd: (value) {
-                                      
-                                      },
-                                      appearance: CircularSliderAppearance(
-                                          customColors: CustomSliderColors(
-                                            progressBarColor:
-                                                HexColor(model.taskColor!),
-                                            /*  progressBarColors: [
-                                              
-                                              /*   Color(0xff6927FF),
-                                              Color(0xff033FFF),
-                                              Color(0xff837DFF),
-                                              Color(0xffC299FC), */
-                                            ], */
-                                            trackColor: Colors.grey.shade300,
-                                          ),
-                                          size: 80.0,
-                                          customWidths: CustomSliderWidths(
-                                              trackWidth: 10.0,
-                                              progressBarWidth: 8)),
-                                      initialValue: dp.initialValue,
-                                    ),
+                    ? const LoadingCircular()
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15.0),
+                                  child: SleekCircularSlider(
+                                    min: 0,
+                                    max: 100,
+                                    onChangeEnd: (value) {},
+                                    appearance: CircularSliderAppearance(
+                                        customColors: CustomSliderColors(
+                                          progressBarColor:
+                                              HexColor(model.taskColor!),
+                                          trackColor: Colors.grey.shade300,
+                                        ),
+                                        size: 80.0,
+                                        customWidths: CustomSliderWidths(
+                                            trackWidth: 10.0,
+                                            progressBarWidth: 8)),
+                                    initialValue: dp.initialValue,
                                   ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        model.categoryName!,
-                                        style: const TextStyle(
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Total task: " + dp.total.toString(),
-                                        style: const TextStyle(
-                                            color: Colors.grey, fontSize: 16.0),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      model.categoryName!,
+                                      style: const TextStyle(
+                                          fontSize: 22.0,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      "Total task: " + dp.total.toString(),
+                                      style: const TextStyle(
+                                          color: Colors.grey, fontSize: 16.0),
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
-                            Divider(color: Colors.grey.shade300),
-                            dp.tasklist.isNotEmpty
-                                ? dp.isLoading
-                                    ? const Circular()
-                                    : TaskList(
-                                        todoId: todoId,
-                                        model: model,
-                                      )
-                                : Container(
-                                    width: size.width,
-                                    height: size.height,
-                                    alignment: Alignment.center,
-                                    child: const Text("henüz liste boş"))
-                          ],
-                        ),
+                          ),
+                          Divider(color: Colors.grey.shade300),
+                          dp.tasklist.isNotEmpty
+                              ? dp.isLoading
+                                  ? const LoadingCircular()
+                                  : TaskList(
+                                      todoId: todoId,
+                                      model: model,
+                                    )
+                              : const Expanded(
+                                  child: Center(child: Text("henüz liste boş")))
+                        ],
                       ),
                 floatingActionButton: FabButton(
                   () {
-                    taskDialog(context, dp);
+                    taskDialog(
+                      context,
+                      dp,
+                    );
                   },
                   FontAwesomeIcons.plus,
                   HexColor(model.taskColor!),
@@ -149,42 +136,3 @@ class DetailView extends StatelessWidget {
         });
   }
 }
-/* ListView.builder(
-                                  primary: false,
-                                  shrinkWrap: true,
-                                  itemCount: dp.tasklist.length,
-                                  itemBuilder: (context, i) {
-                                    return Column(
-                                      children: [
-                                        const Divider(
-                                          color: Colors.black,
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            dp.taskStatus(
-                                              dp.tasklist[i].taskId,
-                                              dp.tasklist[i].onTap,
-                                            );
-                                          },
-                                          child: Row(
-                                            children: [
-                                              dp.tasklist[i].onTap
-                                                  ? const Icon(
-                                                      FontAwesomeIcons.dashcube)
-                                                  : Icon(Icons.add,
-                                                      color: dp.onTap
-                                                          ? Colors.black
-                                                          : Colors.grey),
-                                              Text(
-                                                dp.tasklist[i].task!,
-                                                style: TextStyle(
-                                                    color: dp.tasklist[i].onTap
-                                                        ? Colors.black
-                                                        : Colors.grey),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  }) */
