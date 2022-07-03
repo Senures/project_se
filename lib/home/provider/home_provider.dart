@@ -15,12 +15,18 @@ class HomeProvider extends ChangeNotifier {
   List<TodoModel> todolist = [];
 
   List<TaskColor> taskColor = [
-    TaskColor(const Color(0xff6927FF), false),
+    /*  TaskColor(const Color(0xff6927FF), false),
     TaskColor(const Color(0xffFF449F), false),
     TaskColor(const Color(0xffFEB139), false),
     TaskColor(const Color(0xff64DFDF), false),
     TaskColor(const Color(0xffBCEB3C), false),
-    TaskColor(const Color(0xffFCF876), false),
+    TaskColor(const Color(0xffFCF876), false), */
+    TaskColor(const Color(0xff28d5c2), false),
+    TaskColor(const Color(0xff7e6be8), false),
+    TaskColor(const Color(0xff73d197), false),
+    TaskColor(const Color(0xffe7647f), false),
+    TaskColor(const Color(0xfff9cf67), false),
+    TaskColor(const Color(0xfff39970), false),
   ];
 
   HomeProvider() {
@@ -58,9 +64,10 @@ class HomeProvider extends ChangeNotifier {
   createToDo(BuildContext context) {
     if (categoryname!.text.isNotEmpty && todoColor != null) {
       createTodoCollection();
+      Navigator.pop(context);
     } else {
-      snackBarCustom(
-          context, "Please fill in completely!", ProjectColors.fabButonColor);
+      snackBarCustom(context, "Please fill in completely!",
+          ProjectColors.fabButonColor, 3);
     }
     notifyListeners();
   }
@@ -97,6 +104,7 @@ class HomeProvider extends ChangeNotifier {
     for (var element in taskColor) {
       element.isSelected = false;
     }
+    todoColor = null;
     notifyListeners();
   }
 }

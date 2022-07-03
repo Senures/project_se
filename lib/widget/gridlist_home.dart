@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:se_to_do/detail/view/detail_view.dart';
 import 'package:se_to_do/home/provider/home_provider.dart';
+import 'package:se_to_do/utils/const.dart';
 import 'package:se_to_do/widget/color_circle.dart';
 import 'package:se_to_do/widget/color_utils.dart';
-
 
 class GridListHome extends StatelessWidget {
   const GridListHome({Key? key}) : super(key: key);
@@ -33,7 +33,6 @@ class GridListHome extends StatelessWidget {
                           todoId: hp.todolist[index].todoId!,
                           model: hp.todolist[index],
                           todolist: hp.todolist,
-                        
                         ),
                       ),
                     );
@@ -65,17 +64,17 @@ class GridListHome extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              TextButton(
-                                  onPressed: () {
-                                    //createDialog(context, hp);
-                                  },
-                                  child: Text(
-                                    hp.todolist[index].categoryName!,
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold),
-                                  )),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5.0, vertical: 5.0),
+                                child: Text(
+                                  hp.todolist[index].categoryName!,
+                                  style: TextStyle(
+                                      color: ProjectColors.fixColor,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
                             ],
                           ),
                         ],

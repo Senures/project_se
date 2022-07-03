@@ -119,7 +119,14 @@ class DetailView extends StatelessWidget {
                                       model: model,
                                     )
                               : const Expanded(
-                                  child: Center(child: Text("henüz liste boş")))
+                                  child: Center(
+                                      child: Text(
+                                  "Task list is empty",
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 30.0,
+                                      fontWeight: FontWeight.bold),
+                                )))
                         ],
                       ),
                 floatingActionButton: FabButton(

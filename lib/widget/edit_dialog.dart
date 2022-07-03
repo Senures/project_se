@@ -27,7 +27,7 @@ editDialog(BuildContext context, DetailProvider dp, int i) {
                         alignment: Alignment.center,
                         width: size.width,
                         child: Image.asset(
-                          "assets/logo.png",
+                         "assets/images/tasks.png",
                           width: 40.0,
                         ),
                       ),

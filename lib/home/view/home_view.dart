@@ -22,32 +22,154 @@ class HomeView extends StatelessWidget {
         builder: (context, child) {
           return Consumer<HomeProvider>(builder: (context, hp, child) {
             return Scaffold(
-              body: hp.isLoading
-                  ? const LoadingCircular()
-                  : SafeArea(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 25.0),
-                              child: Image.asset(
-                                "assets/logo.png",
-                                width: 100.0,
+                // backgroundColor: ProjectColors.kBdarkPurple,
+                body: hp.isLoading
+                    ? const LoadingCircular()
+                    : SafeArea(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 15.0),
+                                child: Container(
+                                  margin: const EdgeInsets.all(10.0),
+                                  padding: const EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                      color: ProjectColors.kBdarkPurple,
+                                      borderRadius:
+                                          BorderRadius.circular(10.0)),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: ProjectColors.kBdarkPurple,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: ProjectColors
+                                                      .kBlihgtPurple,
+                                                  blurRadius: 15.0,
+                                                  spreadRadius: 5.0)
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(10.0)),
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Image.asset(
+                                          "assets/images/tasks.png",
+                                          //color: Colors.white,
+                                          width: 45.0,
+                                        ),
+                                      ),
+                                      Container(
+                                        width: size.width * 0.6,
+                                        //height: size.height * 0.03,
+                                        //color: Colors.white,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            const Text.rich(TextSpan(
+                                                text: "Hey,\n",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 25.0),
+                                                children: [
+                                                  TextSpan(
+                                                      text: "Welcome",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          fontSize: 20.0))
+                                                ])),
+                                            TextButton(
+                                                onPressed: () async {
+                                                  await FirebaseAuth.instance
+                                                      .signOut();
+                                                  Navigator.pushAndRemoveUntil<
+                                                      void>(
+                                                    context,
+                                                    MaterialPageRoute<void>(
+                                                        builder: (BuildContext
+                                                                context) =>
+                                                            const SplashScreen()),
+                                                    ModalRoute.withName('/'),
+                                                  );
+                                                },
+                                                child: const Text(
+                                                  "Sign out",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 15.0),
+                                                ))
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ),
-                            hp.isLoading
-                                ? const LoadingCircular()
-                                : const GridListHome()
-                          ],
+                              /* Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                child: Text(
+                                  "Your all to do list",
+                                  style: TextStyle(
+                                      color: ProjectColors.fixColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25.0),
+                                ),
+                              ), */
+                              hp.isLoading
+                                  ? const LoadingCircular()
+                                  : hp.todolist.isNotEmpty
+                                      ? Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 15.0),
+                                              child: Text(
+                                                "Your all to do list",
+                                                style: TextStyle(
+                                                    color: Colors.grey.shade500,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20.0),
+                                              ),
+                                            ),
+                                            const GridListHome(),
+                                          ],
+                                        )
+                                      : Container(
+                                          height: size.height * 0.4,
+                                          //burda yükseliği  elle verdim tekrar bakıcam
+                                          alignment: Alignment.bottomCenter,
+                                          child: const Text(
+                                            "To do list is empty",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 30.0,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-              /*       floatingActionButton: FabButton(() {
-                 
+                floatingActionButton: FabButton(() {
+                  hp.clearDialaog();
                   toDocreateDialog(context, hp);
-                }, FontAwesomeIcons.plus, ProjectColors.fabButonColor) */
-              floatingActionButton: FabButton(() async {
+                }, FontAwesomeIcons.plus, ProjectColors.kBdarkPurple)
+                /*  floatingActionButton: FabButton(() async {
                 await FirebaseAuth.instance.signOut();
                 Navigator.pushAndRemoveUntil<void>(
                   context,
@@ -56,8 +178,8 @@ class HomeView extends StatelessWidget {
                   ModalRoute.withName('/'),
                 );
               }, FontAwesomeIcons.rightFromBracket,
-                  ProjectColors.fabButonColor),
-            );
+                  ProjectColors.fabButonColor), */
+                );
           });
         });
   }

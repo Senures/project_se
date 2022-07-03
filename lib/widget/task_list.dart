@@ -19,6 +19,7 @@ class TaskList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<DetailProvider>(
       create: (context) => DetailProvider(todoId, context),
+    
       builder: (context, child) {
         return Consumer<DetailProvider>(builder: (context, dp, child) {
           return ListView.builder(

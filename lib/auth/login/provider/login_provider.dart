@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/home/view/home_view.dart';
+import 'package:se_to_do/utils/const.dart';
 import 'package:se_to_do/widget/custom_snackbar.dart';
+import 'package:se_to_do/widget/snackbar_widget.dart';
 
 class LoginProvider with ChangeNotifier {
   BuildContext context;
@@ -26,7 +28,6 @@ class LoginProvider with ChangeNotifier {
 
   loginEmail() async {
     if (formGlobalKey.currentState!.validate()) {
-      setIsLoading(true);
       try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailcontroller!.text,
@@ -43,28 +44,29 @@ class LoginProvider with ChangeNotifier {
       } on FirebaseAuthException catch (e) {
         setIsLoading(false);
         if (e.code == 'user-not-found') {
-          customSnackbar(
-              context: context,
-              type: 'error',
-              message:
-                  'Kullanıcı bulunamadı. Lütfen bilgilerinizi kontrol ediniz.');
+          snackBarCustom(
+              context,
+              "User not found. Please check your information.",
+              ProjectColors.kBdarkPurple,
+              3);
         } else if (e.code == 'wrong-password') {
-          customSnackbar(
-              context: context,
-              type: 'error',
-              message:
-                  'Şifre yanlış girildi. Lütfen bilgilerinizi kontrol ediniz.');
+          snackBarCustom(
+              context,
+              "The password was entered incorrectly. Please check your information.",
+              ProjectColors.kBdarkPurple,
+              3);
         } else if (e.code == 'user-disabled') {
-          customSnackbar(
-              context: context,
-              type: 'error',
-              message: 'Hesabınız bloke edilmiştir. Lütfen iletişime geçiniz.');
+          snackBarCustom(
+              context,
+              "Your account has been blocked. Please contact.",
+              ProjectColors.kBdarkPurple,
+              3);
         } else if (e.code == 'invalid-email') {
-          customSnackbar(
-              context: context,
-              type: 'error',
-              message:
-                  'Geçersiz E-posta girdiniz. Lütfen bilgilerinizi kontrol ediniz.');
+          snackBarCustom(
+              context,
+              "You have entered an Invalid Email. Please check your information.",
+              ProjectColors.kBdarkPurple,
+              3);
         }
       } catch (e) {
         setIsLoading(false);

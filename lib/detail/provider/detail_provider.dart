@@ -75,10 +75,9 @@ class DetailProvider extends ChangeNotifier {
       initialValue = tasklist.isEmpty
           ? 0
           : (double.parse(circular) * 100) / tasklist.length;
-
+      isLoading = false;
       notifyListeners();
     });
-
     isLoading = false;
     notifyListeners();
   }
@@ -103,8 +102,8 @@ class DetailProvider extends ChangeNotifier {
     if (taskcontroller!.text.isNotEmpty) {
       createTaskCollection();
     } else {
-      snackBarCustom(
-          context, "Please fill in completely!", ProjectColors.fabButonColor);
+      snackBarCustom(context, "Please fill in completely!",
+          ProjectColors.fabButonColor, 3);
     }
     notifyListeners();
   }
@@ -113,8 +112,8 @@ class DetailProvider extends ChangeNotifier {
     if (editcontroller!.text.isNotEmpty) {
       updateTask(taskId);
     } else {
-      snackBarCustom(
-          context, "Please fill in completely!", ProjectColors.fabButonColor);
+      snackBarCustom(context, "Please fill in completely!",
+          ProjectColors.fabButonColor, 3);
     }
     notifyListeners();
   }
@@ -156,6 +155,7 @@ class DetailProvider extends ChangeNotifier {
         .doc(taskId)
         .delete();
 
-    //notifyListeners();
+    
   }
+
 }

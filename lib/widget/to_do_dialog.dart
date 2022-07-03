@@ -30,7 +30,7 @@ toDocreateDialog(BuildContext context, HomeProvider hp) {
                       alignment: Alignment.center,
                       width: size.width,
                       child: Image.asset(
-                        "assets/logo.png",
+                        "assets/images/tasks.png",
                         width: 40.0,
                       ),
                     ),
@@ -81,7 +81,6 @@ toDocreateDialog(BuildContext context, HomeProvider hp) {
           actions: [
             TextButton(
                 onPressed: (() {
-                  hp.clearDialaog();
                   Navigator.pop(context);
                 }),
                 child: Text(ProjectText.cancel,
@@ -89,8 +88,6 @@ toDocreateDialog(BuildContext context, HomeProvider hp) {
             TextButton(
                 onPressed: (() {
                   hp.createToDo(context);
-                  hp.clearDialaog();
-                  Navigator.pop(context);
                 }),
                 child: Text(ProjectText.create,
                     style: ProjectTextStyles.createStyle))

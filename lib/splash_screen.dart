@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), (){
+    Future.delayed(const Duration(seconds: 3), () {
       final userCredential = FirebaseAuth.instance.currentUser;
       if (userCredential == null) {
         Navigator.pushReplacement(context,
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
           width: size.width,
           height: size.height,
           child: Image.asset(
-            "assets/logo.png",
+            "assets/images/tasks.png",
             width: 150.0,
           )),
     );

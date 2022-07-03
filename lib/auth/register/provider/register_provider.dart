@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:se_to_do/auth/login/login_view.dart';
+import 'package:se_to_do/auth/login/view/login_view.dart';
 import 'package:se_to_do/widget/custom_snackbar.dart';
+import 'package:se_to_do/widget/snackbar_widget.dart';
+
+import '../../../utils/const.dart';
 
 class RegisterProvider extends ChangeNotifier {
   BuildContext context;
@@ -28,9 +31,7 @@ class RegisterProvider extends ChangeNotifier {
   registerWithEmail() {
     if (formGlobalKey.currentState!.validate()) {
       createUser();
-    } else {
-     
-    }
+    } else {}
   }
 
   createUser() async {
@@ -47,22 +48,18 @@ class RegisterProvider extends ChangeNotifier {
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        customSnackbar(
-            context: context,
-            type: 'error',
-            message:
-                'Şifre çok zayıf. Lütfen şifrenizi daha güçlü bir şifre olarak giriniz.');
-       
+        snackBarCustom(
+            context,
+            "Password too weak. Please enter your password as a stronger password.",
+            ProjectColors.kBdarkPurple,
+            3);
       } else if (e.code == 'email-already-in-use') {
-        customSnackbar(
-            context: context,
-            type: 'error',
-            message: 'Bu E-Posta için hesap zaten var.');
-      
+        snackBarCustom(context, "The account for this Email already exists.",
+            ProjectColors.kBdarkPurple, 3);
       }
+      setIsLoading(false);
     } catch (e) {
       setIsLoading(false);
-    
     }
   }
 
@@ -79,5 +76,6 @@ class RegisterProvider extends ChangeNotifier {
         builder: (BuildContext context) => const LoginView(),
       ),
     );
+    setIsLoading(false);
   }
 }

@@ -29,7 +29,8 @@ class ProjectTextStyles {
 }
 
 class ProjectColors {
-  static Color signInColor = const Color(0xff332FD0);
+  static Color kBlihgtPurple=const Color(0xff7e6be8);
+  static Color kBdarkPurple = const Color(0xff6927FF);
   static Color signUpColor = const Color(0xff6807F9);
   static Color fabButonColor = const Color(0xff2D31FA);
   // static Color cancelDialog = const Color(0xff393E46);
