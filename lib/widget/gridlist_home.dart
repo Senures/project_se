@@ -47,6 +47,7 @@ class GridListHome extends StatelessWidget {
                             BoxShadow(
                                 color: Colors.grey.shade200,
                                 blurRadius: 1.0,
+                                offset: Offset(0, 10),
                                 spreadRadius: 1.0)
                           ],
                           borderRadius: BorderRadius.circular(15)),

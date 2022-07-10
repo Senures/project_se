@@ -27,7 +27,7 @@ taskDialog(BuildContext context, DetailProvider dp) {
                         alignment: Alignment.center,
                         width: size.width,
                         child: Image.asset(
-                          "assets/images/tasks.png",
+                        logoImg,
                           width: 40.0,
                         ),
                       ),

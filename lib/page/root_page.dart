@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:se_to_do/auth/login/view/login_view.dart';
 import 'package:se_to_do/auth/register/view/register_view.dart';
 import 'package:se_to_do/utils/const.dart';
-import 'package:se_to_do/widget/root_button.dart';
 
 class RootPageView extends StatelessWidget {
   const RootPageView({Key? key}) : super(key: key);
@@ -12,8 +11,7 @@ class RootPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: ProjectColors.kBdarkPurple,
-      //Color(0xff7e6be8),
+      backgroundColor: kPrimaryColor,
       body: Container(
         width: size.width,
         height: size.height,
@@ -27,7 +25,7 @@ class RootPageView extends StatelessWidget {
               child: GestureDetector(
                 onTap: () => Navigator.pushNamed(context, '/diagonal_demo'),
                 child: Container(
-                  color: ProjectColors.kBlihgtPurple,
+                  color: kSecondaryColor,
                   width: size.width,
                   height: size.height * 0.55,
                   child: Center(
@@ -35,9 +33,9 @@ class RootPageView extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15.0),
-                          color: ProjectColors.kBdarkPurple),
+                          color: kPrimaryColor),
                       child: Image.asset(
-                        "assets/images/tasks.png",
+                        logoImg,
                         width: 150.0,
                       ),
                     ),
@@ -47,17 +45,16 @@ class RootPageView extends StatelessWidget {
             ),
             Container(
               height: size.width * 0.3,
-              // color: Colors.red,
               child: Column(
                 children: const [
                   Text(
                     "Welcome to the",
-                    style: TextStyle(color: Colors.white, fontSize: 22.0),
+                    style: TextStyle(color: kLightColor, fontSize: 22.0),
                   ),
                   Text(
                     "TASKEZ",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: kLightColor,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 5.0,
                         fontSize: 50.0),
@@ -65,7 +62,7 @@ class RootPageView extends StatelessWidget {
                 ],
               ),
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {
                 Navigator.push<void>(
                   context,
@@ -76,7 +73,6 @@ class RootPageView extends StatelessWidget {
               },
               child: Container(
                 height: size.height * 0.2,
-                //color: Colors.blue,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -86,12 +82,12 @@ class RootPageView extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 15.0),
                       height: size.height * 0.08,
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kLightColor,
                           borderRadius: BorderRadius.circular(15.0)),
-                      child: Text("Get started",
+                      child: const Text("Get started",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: ProjectColors.kBdarkPurple,
+                            color: kPrimaryColor,
                             fontSize: 18.0,
                           )),
                     ),
@@ -100,7 +96,7 @@ class RootPageView extends StatelessWidget {
                       children: [
                         const Text(
                           "Already have account?",
-                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+                          style: TextStyle(color: kLightColor, fontSize: 16.0),
                         ),
                         TextButton(
                             onPressed: () {
@@ -115,9 +111,9 @@ class RootPageView extends StatelessWidget {
                             child: const Text(
                               " Sign in",
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: kLightColor,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 16.0),
+                                  fontSize: 17.0),
                             ))
                       ],
                     )
@@ -125,28 +121,6 @@ class RootPageView extends StatelessWidget {
                 ),
               ),
             )
-            /*  RootButton(
-                ontap: () {
-                  Navigator.push<void>(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const LoginView(),
-                    ),
-                  );
-                },
-                text: ProjectText.signIn,
-                color: ProjectColors.signInColor),
-            RootButton(
-                ontap: () {
-                  Navigator.push<void>(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const RegisterView(),
-                    ),
-                  );
-                },
-                text: ProjectText.signUp,
-                color: ProjectColors.signUpColor) */
           ],
         ),
       ),

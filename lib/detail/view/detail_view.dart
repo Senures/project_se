@@ -78,6 +78,7 @@ class DetailView extends StatelessWidget {
                                     max: 100,
                                     onChangeEnd: (value) {},
                                     appearance: CircularSliderAppearance(
+                                        animationEnabled: false,
                                         customColors: CustomSliderColors(
                                           progressBarColor:
                                               HexColor(model.taskColor!),
@@ -117,6 +118,7 @@ class DetailView extends StatelessWidget {
                                   : TaskList(
                                       todoId: todoId,
                                       model: model,
+                                      dp: dp,
                                     )
                               : const Expanded(
                                   child: Center(

@@ -34,35 +34,35 @@ class ForgotPassword extends StatelessWidget {
                 ), */
                 body: Form(
                     key: fgp.formGlobalKey,
-                    child: ListView(children: [
-                      Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
-                          child: ListView(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Diagonal(
-                                clipHeight: 20.0,
-                                axis: Axis.horizontal,
-                                position: DiagonalPosition.BOTTOM_LEFT,
-                                child: GestureDetector(
-                                  onTap: () => Navigator.pushNamed(
-                                      context, '/diagonal_demo'),
-                                  child: Container(
-                                    color:  ProjectColors.kBlihgtPurple,
-                                    width: size.width,
-                                    height: size.height * 0.22,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 15.0, vertical: 10.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          IconButton(
+                    child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Diagonal(
+                              clipHeight: 50.0,
+                              axis: Axis.horizontal,
+                              position: DiagonalPosition.BOTTOM_LEFT,
+                              child: GestureDetector(
+                                onTap: () => Navigator.pushNamed(
+                                    context, '/diagonal_demo'),
+                                child: Container(
+                                  color: ProjectColors.kBlihgtPurple,
+                                  width: size.width,
+                                  height: size.height * 0.25,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15.0, vertical: 10.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        SafeArea(
+                                          child: IconButton(
                                               onPressed: () {
                                                 Navigator.pop(context);
                                               },
@@ -71,187 +71,108 @@ class ForgotPassword extends StatelessWidget {
                                                 color: Colors.white,
                                                 size: 30.0,
                                               )),
-                                          Image.asset(
-                                            "assets/images/tasks.png",
+                                        ),
+                                        SafeArea(
+                                          child: Image.asset(
+                                          logoImg,
+                                            width: 60.0,
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 15.0),
-                                child: Text(
-                                  "Forgot password",
-                                  style: TextStyle(
-                                      color: ProjectColors.fixColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 35.0),
-                                ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 15.0),
+                              child: Text(
+                                "Forgot password",
+                                style: TextStyle(
+                                    color: ProjectColors.fixColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 35.0),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 25.0, vertical: 15.0),
-                                child: Container(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "E-mail",
-                                        style: TextStyle(
-                                            fontSize: 19.0,
-                                            fontWeight: FontWeight.bold,
-                                            color: ProjectColors.fixColor),
-                                      ),
-                                      TextFormField(
-                                        decoration: InputDecoration(
-                                            enabledBorder:
-                                                const UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Colors.grey),
-                                            ),
-                                            focusedBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color:
-                                                      ProjectColors.fixColor),
-                                            ),
-                                            errorStyle: TextStyle(
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 25.0, vertical: 15.0),
+                              child: Container(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "E-mail",
+                                      style: TextStyle(
+                                          fontSize: 19.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: ProjectColors.fixColor),
+                                    ),
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                          enabledBorder:
+                                              const UnderlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.grey),
+                                          ),
+                                          focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: ProjectColors.fixColor),
+                                          ),
+                                          errorStyle: TextStyle(
+                                              color: ProjectColors.kBdarkPurple,
+                                              fontSize: 14.0),
+                                          errorBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
                                                 color:
-                                                    ProjectColors.kBdarkPurple,
-                                                fontSize: 14.0),
-                                            errorBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: ProjectColors
-                                                      .kBdarkPurple),
-                                            ),
-                                            hintText: "Your email id"),
-                                        cursorColor: ProjectColors.fixColor,
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter some text';
-                                          } else if (!value.contains("@")) {
-                                            return "Please e-mail";
-                                          }
-                                          return null;
-                                        },
-                                        controller: fgp.emailcontroller,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 15.0),
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      fgp.resetPassword();
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      primary: ProjectColors.kBdarkPurple,
-                                      alignment: Alignment.center,
-                                      elevation: 10,
-                                      shadowColor: Colors.grey,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0)),
-                                      minimumSize: Size(size.width * 0.6,
-                                          size.height * 0.06), //////// HERE
+                                                    ProjectColors.kBdarkPurple),
+                                          ),
+                                          hintText: "Your email id"),
+                                      cursorColor: ProjectColors.fixColor,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter some text';
+                                        } else if (!value.contains("@")) {
+                                          return "Please e-mail";
+                                        }
+                                        return null;
+                                      },
+                                      controller: fgp.emailcontroller,
                                     ),
-                                    child: const Text("Submit",
-                                        style: ProjectTextStyles.sign),
-                                  ),
+                                  ],
                                 ),
                               ),
-                              TextButton(
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 15.0),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.pop(context);
+                                    fgp.resetPassword();
                                   },
-                                  child: const Text(
-                                    "Back to login",
-                                    style: TextStyle(
-                                        fontSize: 17.0, color: Colors.grey),
-                                  ))
-                            ],
-                          ))
-                    ])));
+                                  style: ElevatedButton.styleFrom(
+                                    primary: ProjectColors.kBdarkPurple,
+                                    alignment: Alignment.center,
+                                    elevation: 10,
+                                    shadowColor: Colors.grey,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0)),
+                                    minimumSize: Size(size.width * 0.6,
+                                        size.height * 0.06), //////// HERE
+                                  ),
+                                  child: const Text("Submit",
+                                      style: ProjectTextStyles.sign),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ))));
           });
         });
   }
 }
-  /*   Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Container(
-                          width: size.width,
-                          child: Text(
-                            ProjectText.email,
-                            style: ProjectTextStyles.textformlabel,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: TextFormField(
-                          showCursor: false,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter some text';
-                            } else if (!value.contains("@")) {
-                              return "Please e-mail";
-                            }
-                            return null;
-                          },
-                          cursorColor: const Color.fromARGB(255, 241, 152, 152),
-                          controller: fgp.emailcontroller,
-                          decoration: InputDecoration(
-                              //  prefixIcon:prefixIcon ,
-                              border: InputBorder.none,
-
-                              // labelText: 'Enter something',
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  width: 1,
-                                  color: Colors.black,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 1,
-                                    color: ProjectColors.enabledBorder),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    width: 1, color: Colors.black),
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            fgp.resetPassword();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: ProjectColors.fixColor,
-                            alignment: Alignment.center,
-                            elevation: 3,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                            minimumSize:
-                                Size(size.width * 0.8, 45.0), //////// HERE
-                          ),
-                          child: const Text(
-                            "Reset",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18.0),
-                          ),
-                        ),
-                      ), */
+ 

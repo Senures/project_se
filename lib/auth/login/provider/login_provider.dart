@@ -27,6 +27,7 @@ class LoginProvider with ChangeNotifier {
   }
 
   loginEmail() async {
+    setIsLoading(true);
     if (formGlobalKey.currentState!.validate()) {
       try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -47,25 +48,25 @@ class LoginProvider with ChangeNotifier {
           snackBarCustom(
               context,
               "User not found. Please check your information.",
-              ProjectColors.kBdarkPurple,
+             kPrimaryColor,
               3);
         } else if (e.code == 'wrong-password') {
           snackBarCustom(
               context,
               "The password was entered incorrectly. Please check your information.",
-              ProjectColors.kBdarkPurple,
+                  kPrimaryColor,
               3);
         } else if (e.code == 'user-disabled') {
           snackBarCustom(
               context,
               "Your account has been blocked. Please contact.",
-              ProjectColors.kBdarkPurple,
+                  kPrimaryColor,
               3);
         } else if (e.code == 'invalid-email') {
           snackBarCustom(
               context,
               "You have entered an Invalid Email. Please check your information.",
-              ProjectColors.kBdarkPurple,
+                 kPrimaryColor,
               3);
         }
       } catch (e) {

@@ -38,6 +38,12 @@ class HomeView extends StatelessWidget {
                                   padding: const EdgeInsets.all(10.0),
                                   decoration: BoxDecoration(
                                       color: ProjectColors.kBdarkPurple,
+                                      boxShadow: const [
+                                        BoxShadow(
+                                            color: Colors.black26,
+                                            blurRadius: 8.0,
+                                            offset: Offset(0, 5))
+                                      ],
                                       borderRadius:
                                           BorderRadius.circular(10.0)),
                                   child: Row(
@@ -48,20 +54,19 @@ class HomeView extends StatelessWidget {
                                     children: [
                                       Container(
                                         decoration: BoxDecoration(
-                                            color: ProjectColors.kBdarkPurple,
-                                            boxShadow: [
+                                            color: kPrimaryColor,
+                                            boxShadow: const [
                                               BoxShadow(
-                                                  color: ProjectColors
-                                                      .kBlihgtPurple,
-                                                  blurRadius: 15.0,
-                                                  spreadRadius: 5.0)
+                                                  color: Colors.white12,
+                                                  blurRadius: 1.0,
+                                                  spreadRadius: 1.0)
                                             ],
                                             borderRadius:
                                                 BorderRadius.circular(10.0)),
                                         padding: const EdgeInsets.all(10.0),
                                         child: Image.asset(
-                                          "assets/images/tasks.png",
-                                          //color: Colors.white,
+                                         logoImg,
+                                      
                                           width: 45.0,
                                         ),
                                       ),
@@ -78,7 +83,7 @@ class HomeView extends StatelessWidget {
                                             const Text.rich(TextSpan(
                                                 text: "Hey,\n",
                                                 style: TextStyle(
-                                                    color: Colors.white,
+                                                    color: kLightColor,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 25.0),
                                                 children: [
@@ -106,7 +111,7 @@ class HomeView extends StatelessWidget {
                                                 child: const Text(
                                                   "Sign out",
                                                   style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: kLightColor,
                                                       fontSize: 15.0),
                                                 ))
                                           ],
@@ -116,17 +121,7 @@ class HomeView extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              /* Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: Text(
-                                  "Your all to do list",
-                                  style: TextStyle(
-                                      color: ProjectColors.fixColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 25.0),
-                                ),
-                              ), */
+                            
                               hp.isLoading
                                   ? const LoadingCircular()
                                   : hp.todolist.isNotEmpty
@@ -168,17 +163,8 @@ class HomeView extends StatelessWidget {
                 floatingActionButton: FabButton(() {
                   hp.clearDialaog();
                   toDocreateDialog(context, hp);
-                }, FontAwesomeIcons.plus, ProjectColors.kBdarkPurple)
-                /*  floatingActionButton: FabButton(() async {
-                await FirebaseAuth.instance.signOut();
-                Navigator.pushAndRemoveUntil<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const SplashScreen()),
-                  ModalRoute.withName('/'),
-                );
-              }, FontAwesomeIcons.rightFromBracket,
-                  ProjectColors.fabButonColor), */
+                }, FontAwesomeIcons.plus,kPrimaryColor)
+               
                 );
           });
         });

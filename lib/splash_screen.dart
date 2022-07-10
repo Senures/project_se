@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/home/view/home_view.dart';
 import 'package:se_to_do/page/root_page.dart';
+import 'package:se_to_do/utils/const.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key})
@@ -38,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
           width: size.width,
           height: size.height,
           child: Image.asset(
-            "assets/images/tasks.png",
+            logoImg,
             width: 150.0,
           )),
     );

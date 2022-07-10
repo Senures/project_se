@@ -11,18 +11,14 @@ import 'package:se_to_do/widget/edit_dialog.dart';
 class TaskList extends StatelessWidget {
   String todoId;
   TodoModel model;
+  DetailProvider dp;
 
-  TaskList({Key? key, required this.todoId, required this.model})
+  TaskList({Key? key, required this.todoId, required this.model,required this.dp})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<DetailProvider>(
-      create: (context) => DetailProvider(todoId, context),
-    
-      builder: (context, child) {
-        return Consumer<DetailProvider>(builder: (context, dp, child) {
-          return ListView.builder(
+   return ListView.builder(
               primary: false,
               shrinkWrap: true,
               itemCount: dp.tasklist.length,
@@ -88,8 +84,7 @@ class TaskList extends StatelessWidget {
                   ),
                 );
               });
-        });
-      },
-    );
+     
+    
   }
 }

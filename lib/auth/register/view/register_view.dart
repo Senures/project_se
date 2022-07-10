@@ -18,7 +18,7 @@ class RegisterView extends StatelessWidget {
         builder: (context, child) {
           return Consumer<RegisterProvider>(builder: (context, rp, child) {
             return Scaffold(
-                backgroundColor: Colors.white,
+                backgroundColor: kLightColor,
                 body: rp.isLoading
                     ? const LoadingCircular()
                     : Form(
@@ -39,7 +39,7 @@ class RegisterView extends StatelessWidget {
                                       onTap: () => Navigator.pushNamed(
                                           context, '/diagonal_demo'),
                                       child: Container(
-                                        color: ProjectColors.kBlihgtPurple,
+                                        color: kSecondaryColor,
                                         width: size.width,
                                         height: size.height * 0.25,
                                         child: Padding(
@@ -59,13 +59,13 @@ class RegisterView extends StatelessWidget {
                                                     icon: const Icon(
                                                       FontAwesomeIcons
                                                           .angleLeft,
-                                                      color: Colors.white,
+                                                      color: kLightColor,
                                                       size: 30.0,
                                                     )),
                                               ),
                                               SafeArea(
                                                 child: Image.asset(
-                                                  "assets/images/tasks.png",
+                                                  logoImg,
                                                   width: 60.0,
                                                 ),
                                               ),
@@ -182,10 +182,9 @@ class RegisterView extends StatelessWidget {
                                                               .visibility_off_rounded,
                                                           color: Colors.grey,
                                                         )
-                                                      : Icon(
+                                                      : const Icon(
                                                           Icons.visibility,
-                                                          color: ProjectColors
-                                                              .kBdarkPurple,
+                                                          color: kPrimaryColor,
                                                         )),
                                             ),
                                           ),
@@ -203,7 +202,7 @@ class RegisterView extends StatelessWidget {
                                           rp.registerWithEmail();
                                         },
                                         style: ElevatedButton.styleFrom(
-                                          primary: ProjectColors.signUpColor,
+                                          primary: kPrimaryColor,
                                           alignment: Alignment.center,
                                           elevation: 10,
                                           shadowColor: Colors.grey,
@@ -253,244 +252,6 @@ class RegisterView extends StatelessWidget {
                                 ]),
                           ),
                         ),
-                        /* Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15.0, vertical: 15.0),
-                          child: Column(
-                            children: [
-                              Expanded(
-                                flex: 2,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 10.0),
-                                          child: Text(
-                                            ProjectText.email,
-                                            style:
-                                                ProjectTextStyles.textformlabel,
-                                          ),
-                                        ),
-                                        TextFormField(
-                                            cursorColor: ProjectColors.fixColor,
-                                            controller: rp.emailcontroller,
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty) {
-                                                return 'Please enter some text';
-                                              } else if (!value.contains("@")) {
-                                                return "Please enter valid email";
-                                              }
-                                              return null;
-                                            },
-                                            decoration: InputDecoration(
-                                                //  prefixIcon:prefixIcon ,
-                                                border: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      width: 1,
-                                                      color: Colors.black),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-
-                                                // labelText: 'Enter something',
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      width: 1,
-                                                      color: ProjectColors
-                                                          .enabledBorder),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      width: 1,
-                                                      color: ProjectColors
-                                                          .enabledBorder),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      width: 1,
-                                                      color: ProjectColors
-                                                          .fixColor),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                )))
-                                      ],
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 10.0),
-                                          child: Text(
-                                            ProjectText.password,
-                                            style:
-                                                ProjectTextStyles.textformlabel,
-                                          ),
-                                        ),
-                                        TextFormField(
-                                          cursorColor: ProjectColors.fixColor,
-                                          obscureText: rp.obscureText,
-                                          controller: rp.passwordcontroller,
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Please enter some text';
-                                            } else if (value.length <= 5) {
-                                              return "Password must be at least 6 characters";
-                                            }
-                                            return null;
-                                          },
-                                          decoration: InputDecoration(
-                                              suffixIcon: IconButton(
-                                                  onPressed: (() {
-                                                    rp.setObscure();
-                                                  }),
-                                                  icon: rp.obscureText
-                                                      ? const Icon(
-                                                          Icons
-                                                              .visibility_off_rounded,
-                                                          color: Colors.grey,
-                                                        )
-                                                      : Icon(
-                                                          Icons.visibility,
-                                                          color: ProjectColors
-                                                              .signUpColor,
-                                                        )),
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    width: 1,
-                                                    color: Colors.black),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    width: 1,
-                                                    color: ProjectColors
-                                                        .enabledBorder),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    width: 1,
-                                                    color: ProjectColors
-                                                        .enabledBorder),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              disabledBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    width: 1,
-                                                    color: ProjectColors
-                                                        .enabledBorder),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    width: 1,
-                                                    color:
-                                                        ProjectColors.fixColor),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              )),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      alignment: Alignment.center,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          rp.registerWithEmail();
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          primary: ProjectColors.signUpColor,
-                                          alignment: Alignment.center,
-                                          elevation: 10,
-                                          shadowColor: Colors.grey,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0)),
-                                          minimumSize: Size(size.width * 0.8,
-                                              45.0), //////// HERE
-                                        ),
-                                        child: const Text(
-                                          "Sign up",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 18.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  // color: Colors.blue,
-                                  child: Column(
-                                    children: [
-                                      Row(children: const <Widget>[
-                                        Expanded(
-                                            child: Divider(
-                                          color: Colors.black,
-                                          indent: 30.0,
-                                          endIndent: 15.0,
-                                        )),
-                                        Text("OR"),
-                                        Expanded(
-                                            child: Divider(
-                                          color: Colors.black,
-                                          indent: 15.0,
-                                          endIndent: 30.0,
-                                        )),
-                                      ]),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 20.0),
-                                        child: InkWell(
-                                          onTap: () {},
-                                          child: Container(
-                                            width: size.width * 0.15,
-                                            height: size.height * 0.05,
-                                            decoration: BoxDecoration(
-                                                color:
-                                                    ProjectColors.signUpColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0)),
-                                            child: const Icon(
-                                              FontAwesomeIcons.google,
-                                              color: Colors.white,
-                                              size: 15.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )  */
                       ));
           });
         });

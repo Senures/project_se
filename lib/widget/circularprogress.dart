@@ -7,8 +7,9 @@ class LoadingCircular extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: CircularProgressIndicator(
-      
-        backgroundColor: Color(0xff6807F9)),
+          
+          strokeWidth: 5.0,
+          backgroundColor: Color(0xff6807F9)),
     );
   }
 }

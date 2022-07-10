@@ -30,7 +30,7 @@ toDocreateDialog(BuildContext context, HomeProvider hp) {
                       alignment: Alignment.center,
                       width: size.width,
                       child: Image.asset(
-                        "assets/images/tasks.png",
+                       logoImg,
                         width: 40.0,
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ProjectText {
   static String signIn = "Sign in";
@@ -13,7 +14,7 @@ class ProjectText {
   static String create = "Create";
 }
 
-class ProjectTextStyles {
+/* class ProjectTextStyles {
   static TextStyle textformlabel =
       const TextStyle(fontSize: 17.0, color: Color(0xff393E46));
   static TextStyle cancelStyle =
@@ -29,7 +30,7 @@ class ProjectTextStyles {
 }
 
 class ProjectColors {
-  static Color kBlihgtPurple=const Color(0xff7e6be8);
+  static Color kBlihgtPurple = const Color(0xff7e6be8);
   static Color kBdarkPurple = const Color(0xff6927FF);
   static Color signUpColor = const Color(0xff6807F9);
   static Color fabButonColor = const Color(0xff2D31FA);
@@ -42,4 +43,24 @@ class ProjectColors {
   static Color editColor = const Color(0xff6927FF);
   static Color red = const Color(0xffFF5F5F);
   static Color green = const Color(0xff52DE97);
-}
+} */
+
+// Colos that use in our app
+const kPrimaryColor = Color(0xff6927FF);
+const kLightColor = Color(0xffFFFFFF);
+const kSecondaryColor = Color(0xff7e6be8);
+
+const kTextColor = Color(0xFF12153D);
+const kTextLightColor = Color(0xFF9A9BB2);
+
+
+const kDefaultPadding = 20.0;
+
+const kDefaultShadow = BoxShadow(
+  offset: Offset(0, 4),
+  blurRadius: 4,
+  color: Colors.black26,
+);
+
+//image in app
+const String logoImg = "assets/images/logo.png";
