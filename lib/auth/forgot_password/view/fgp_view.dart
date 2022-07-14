@@ -46,10 +46,8 @@ class ForgotPassword extends StatelessWidget {
                               axis: Axis.horizontal,
                               position: DiagonalPosition.BOTTOM_LEFT,
                               child: GestureDetector(
-                                onTap: () => Navigator.pushNamed(
-                                    context, '/diagonal_demo'),
                                 child: Container(
-                                  color: ProjectColors.kBlihgtPurple,
+                                  color: kSecondaryColor,
                                   width: size.width,
                                   height: size.height * 0.25,
                                   child: Padding(
@@ -74,7 +72,7 @@ class ForgotPassword extends StatelessWidget {
                                         ),
                                         SafeArea(
                                           child: Image.asset(
-                                          logoImg,
+                                            logoImg,
                                             width: 60.0,
                                           ),
                                         ),
@@ -90,7 +88,7 @@ class ForgotPassword extends StatelessWidget {
                               child: Text(
                                 "Forgot password",
                                 style: TextStyle(
-                                    color: ProjectColors.fixColor,
+                                    color: kTextColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 35.0),
                               ),
@@ -107,7 +105,7 @@ class ForgotPassword extends StatelessWidget {
                                       style: TextStyle(
                                           fontSize: 19.0,
                                           fontWeight: FontWeight.bold,
-                                          color: ProjectColors.fixColor),
+                                          color: kTextColor),
                                     ),
                                     TextFormField(
                                       decoration: InputDecoration(
@@ -117,22 +115,14 @@ class ForgotPassword extends StatelessWidget {
                                                 BorderSide(color: Colors.grey),
                                           ),
                                           focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: ProjectColors.fixColor),
-                                          ),
-                                          errorStyle: TextStyle(
-                                              color: ProjectColors.kBdarkPurple,
-                                              fontSize: 14.0),
-                                          errorBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color:
-                                                    ProjectColors.kBdarkPurple),
+                                            borderSide:
+                                                BorderSide(color: kTextColor),
                                           ),
                                           hintText: "Your email id"),
-                                      cursorColor: ProjectColors.fixColor,
+                                      cursorColor: kTextColor,
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
-                                          return 'Please enter some text';
+                                          return 'Please enter valid email';
                                         } else if (!value.contains("@")) {
                                           return "Please e-mail";
                                         }
@@ -154,7 +144,7 @@ class ForgotPassword extends StatelessWidget {
                                     fgp.resetPassword();
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    primary: ProjectColors.kBdarkPurple,
+                                    primary: kPrimaryColor,
                                     alignment: Alignment.center,
                                     elevation: 10,
                                     shadowColor: Colors.grey,
@@ -175,4 +165,3 @@ class ForgotPassword extends StatelessWidget {
         });
   }
 }
- 

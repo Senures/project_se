@@ -67,7 +67,7 @@ class HomeProvider extends ChangeNotifier {
       Navigator.pop(context);
     } else {
       snackBarCustom(context, "Please fill in completely!",
-          ProjectColors.fabButonColor, 3);
+         kPrimaryColor, 3);
     }
     notifyListeners();
   }

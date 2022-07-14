@@ -45,17 +45,17 @@ editDialog(BuildContext context, DetailProvider dp, int i) {
                       controller: dp.editcontroller,
 
                       //  controller: dp.editcontroller,
-                      cursorColor: ProjectColors.fixColor,
+                      cursorColor: kTextColor,
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                width: 1, color: ProjectColors.enabledBorder),
+                                width: 1, color: kBorderColor),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                width: 1, color: ProjectColors.fixColor),
+                                width: 1, color: kTextColor),
                             borderRadius: BorderRadius.circular(10),
                           )),
                     )

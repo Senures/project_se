@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/auth/login/view/login_view.dart';
-import 'package:se_to_do/widget/custom_snackbar.dart';
+import 'package:se_to_do/widget/animation.dart';
 import 'package:se_to_do/widget/snackbar_widget.dart';
 
 import '../../../utils/const.dart';
@@ -51,11 +51,11 @@ class RegisterProvider extends ChangeNotifier {
         snackBarCustom(
             context,
             "Password too weak. Please enter your password as a stronger password.",
-            ProjectColors.kBdarkPurple,
+            kPrimaryColor,
             3);
       } else if (e.code == 'email-already-in-use') {
         snackBarCustom(context, "The account for this Email already exists.",
-            ProjectColors.kBdarkPurple, 3);
+           kPrimaryColor, 3);
       }
       setIsLoading(false);
     } catch (e) {
@@ -72,9 +72,7 @@ class RegisterProvider extends ChangeNotifier {
 
     Navigator.push(
       context,
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) => const LoginView(),
-      ),
+    BouncyPageRoute(widget: LoginView())
     );
     setIsLoading(false);
   }

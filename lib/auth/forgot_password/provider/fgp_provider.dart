@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/auth/login/view/login_view.dart';
+import 'package:se_to_do/widget/animation.dart';
 
 class ForgotProvider extends ChangeNotifier {
   BuildContext context;
@@ -13,9 +14,8 @@ class ForgotProvider extends ChangeNotifier {
       reset();
       Navigator.push<void>(
         context,
-        MaterialPageRoute<void>(
-          builder: (BuildContext context) => const LoginView(),
-        ),
+      BouncyPageRoute(widget: LoginView()),
+        
       );
     }
   }

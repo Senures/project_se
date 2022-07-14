@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:se_to_do/auth/login/view/login_view.dart';
 import 'package:se_to_do/auth/register/view/register_view.dart';
 import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/widget/animation.dart';
 
 class RootPageView extends StatelessWidget {
   const RootPageView({Key? key}) : super(key: key);
@@ -23,7 +24,6 @@ class RootPageView extends StatelessWidget {
               axis: Axis.horizontal,
               position: DiagonalPosition.BOTTOM_LEFT,
               child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, '/diagonal_demo'),
                 child: Container(
                   color: kSecondaryColor,
                   width: size.width,
@@ -62,14 +62,10 @@ class RootPageView extends StatelessWidget {
                 ],
               ),
             ),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 Navigator.push<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const RegisterView(),
-                  ),
-                );
+                    context, BouncyPageRoute(widget: RegisterView()));
               },
               child: Container(
                 height: size.height * 0.2,
@@ -100,13 +96,8 @@ class RootPageView extends StatelessWidget {
                         ),
                         TextButton(
                             onPressed: () {
-                              Navigator.push<void>(
-                                context,
-                                MaterialPageRoute<void>(
-                                  builder: (BuildContext context) =>
-                                      const LoginView(),
-                                ),
-                              );
+                              Navigator.push<void>(context,
+                                  BouncyPageRoute(widget: LoginView()));
                             },
                             child: const Text(
                               " Sign in",

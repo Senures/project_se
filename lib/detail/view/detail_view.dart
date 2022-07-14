@@ -44,7 +44,7 @@ class DetailView extends StatelessWidget {
                       },
                       icon: Icon(
                         FontAwesomeIcons.xmark,
-                        color: ProjectColors.fixColor,
+                        color: kTextColor,
                         size: 35.0,
                       )),
                   actions: [
@@ -54,7 +54,7 @@ class DetailView extends StatelessWidget {
                         },
                         icon: Icon(
                           FontAwesomeIcons.trash,
-                          color: ProjectColors.fixColor,
+                          color: kTextColor,
                         ))
                   ],
                 ),

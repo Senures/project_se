@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/home/view/home_view.dart';
 import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/widget/animation.dart';
 import 'package:se_to_do/widget/custom_snackbar.dart';
 import 'package:se_to_do/widget/snackbar_widget.dart';
 
@@ -35,12 +36,7 @@ class LoginProvider with ChangeNotifier {
           password: passwordcontroller!.text,
         );
 
-        Navigator.push(
-          context,
-          MaterialPageRoute<void>(
-            builder: (BuildContext context) => const HomeView(),
-          ),
-        );
+        Navigator.push(context, BouncyPageRoute(widget: HomeView()));
         setIsLoading(false);
       } on FirebaseAuthException catch (e) {
         setIsLoading(false);
@@ -48,25 +44,25 @@ class LoginProvider with ChangeNotifier {
           snackBarCustom(
               context,
               "User not found. Please check your information.",
-             kPrimaryColor,
+              kPrimaryColor,
               3);
         } else if (e.code == 'wrong-password') {
           snackBarCustom(
               context,
               "The password was entered incorrectly. Please check your information.",
-                  kPrimaryColor,
+              kPrimaryColor,
               3);
         } else if (e.code == 'user-disabled') {
           snackBarCustom(
               context,
               "Your account has been blocked. Please contact.",
-                  kPrimaryColor,
+              kPrimaryColor,
               3);
         } else if (e.code == 'invalid-email') {
           snackBarCustom(
               context,
               "You have entered an Invalid Email. Please check your information.",
-                 kPrimaryColor,
+              kPrimaryColor,
               3);
         }
       } catch (e) {

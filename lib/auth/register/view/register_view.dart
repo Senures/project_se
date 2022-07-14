@@ -36,8 +36,6 @@ class RegisterView extends StatelessWidget {
                                     axis: Axis.horizontal,
                                     position: DiagonalPosition.BOTTOM_LEFT,
                                     child: GestureDetector(
-                                      onTap: () => Navigator.pushNamed(
-                                          context, '/diagonal_demo'),
                                       child: Container(
                                         color: kSecondaryColor,
                                         width: size.width,
@@ -81,7 +79,7 @@ class RegisterView extends StatelessWidget {
                                     child: Text(
                                       "Register",
                                       style: TextStyle(
-                                          color: ProjectColors.fixColor,
+                                          color: kTextColor,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 38.0),
                                     ),
@@ -99,11 +97,11 @@ class RegisterView extends StatelessWidget {
                                             style: TextStyle(
                                                 fontSize: 19.0,
                                                 fontWeight: FontWeight.bold,
-                                                color: ProjectColors.fixColor),
+                                                color: kTextColor),
                                           ),
                                           TextFormField(
                                             controller: rp.emailcontroller,
-                                            cursorColor: ProjectColors.fixColor,
+                                            cursorColor: kTextColor,
                                             decoration: InputDecoration(
                                                 enabledBorder:
                                                     const UnderlineInputBorder(
@@ -113,8 +111,7 @@ class RegisterView extends StatelessWidget {
                                                 focusedBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                      color: ProjectColors
-                                                          .fixColor),
+                                                      color: kTextColor),
                                                 ),
                                                 hintText: "Your email"),
                                             validator: (value) {
@@ -144,11 +141,11 @@ class RegisterView extends StatelessWidget {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 19.0,
-                                                color: ProjectColors.fixColor),
+                                                color: kTextColor),
                                           ),
                                           TextFormField(
                                             controller: rp.passwordcontroller,
-                                            cursorColor: ProjectColors.fixColor,
+                                            cursorColor: kTextColor,
                                             validator: (value) {
                                               if (value == null ||
                                                   value.isEmpty) {
@@ -168,8 +165,7 @@ class RegisterView extends StatelessWidget {
                                               focusedBorder:
                                                   UnderlineInputBorder(
                                                 borderSide: BorderSide(
-                                                    color:
-                                                        ProjectColors.fixColor),
+                                                    color: kTextColor),
                                               ),
                                               hintText: "Password",
                                               suffixIcon: IconButton(
@@ -243,7 +239,7 @@ class RegisterView extends StatelessWidget {
                                         onPressed: () {},
                                         icon: Icon(
                                           FontAwesomeIcons.google,
-                                          color: ProjectColors.kBdarkPurple,
+                                          color: kPrimaryColor,
                                           size: 30.0,
                                         ),
                                       ),

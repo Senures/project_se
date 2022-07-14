@@ -37,7 +37,7 @@ class HomeView extends StatelessWidget {
                                   margin: const EdgeInsets.all(10.0),
                                   padding: const EdgeInsets.all(10.0),
                                   decoration: BoxDecoration(
-                                      color: ProjectColors.kBdarkPurple,
+                                      color: kPrimaryColor,
                                       boxShadow: const [
                                         BoxShadow(
                                             color: Colors.black26,
@@ -65,8 +65,7 @@ class HomeView extends StatelessWidget {
                                                 BorderRadius.circular(10.0)),
                                         padding: const EdgeInsets.all(10.0),
                                         child: Image.asset(
-                                         logoImg,
-                                      
+                                          logoImg,
                                           width: 45.0,
                                         ),
                                       ),
@@ -121,7 +120,6 @@ class HomeView extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            
                               hp.isLoading
                                   ? const LoadingCircular()
                                   : hp.todolist.isNotEmpty
@@ -141,7 +139,7 @@ class HomeView extends StatelessWidget {
                                                     fontSize: 20.0),
                                               ),
                                             ),
-                                            const GridListHome(),
+                                            GridListHome(hp: hp),
                                           ],
                                         )
                                       : Container(
@@ -163,9 +161,7 @@ class HomeView extends StatelessWidget {
                 floatingActionButton: FabButton(() {
                   hp.clearDialaog();
                   toDocreateDialog(context, hp);
-                }, FontAwesomeIcons.plus,kPrimaryColor)
-               
-                );
+                }, FontAwesomeIcons.plus, kPrimaryColor));
           });
         });
   }

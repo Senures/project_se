@@ -14,16 +14,16 @@ class DialogTextForm extends StatelessWidget {
    
       maxLength: 15,
       controller: controller,
-      cursorColor: ProjectColors.fixColor,
+      cursorColor: kTextColor,
       decoration: InputDecoration(
           border: InputBorder.none,
           enabledBorder: OutlineInputBorder(
             borderSide:
-                BorderSide(width: 1, color: ProjectColors.enabledBorder),
+                BorderSide(width: 1, color:kBorderColor),
             borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 1, color: ProjectColors.fixColor),
+            borderSide: BorderSide(width: 1, color: kTextColor),
             borderRadius: BorderRadius.circular(10),
           )),
     );

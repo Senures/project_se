@@ -103,7 +103,7 @@ class DetailProvider extends ChangeNotifier {
       createTaskCollection();
     } else {
       snackBarCustom(context, "Please fill in completely!",
-          ProjectColors.fabButonColor, 3);
+         kPrimaryColor, 3);
     }
     notifyListeners();
   }
@@ -113,7 +113,7 @@ class DetailProvider extends ChangeNotifier {
       updateTask(taskId);
     } else {
       snackBarCustom(context, "Please fill in completely!",
-          ProjectColors.fabButonColor, 3);
+       kPrimaryColor, 3);
     }
     notifyListeners();
   }

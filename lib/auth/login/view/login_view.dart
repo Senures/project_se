@@ -6,6 +6,7 @@ import 'package:se_to_do/auth/login/provider/login_provider.dart';
 import 'package:se_to_do/auth/register/view/register_view.dart';
 import 'package:se_to_do/auth/forgot_password/view/fgp_view.dart';
 import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/widget/animation.dart';
 import 'package:se_to_do/widget/circularprogress.dart';
 
 class LoginView extends StatelessWidget {
@@ -37,8 +38,6 @@ class LoginView extends StatelessWidget {
                                   axis: Axis.horizontal,
                                   position: DiagonalPosition.BOTTOM_LEFT,
                                   child: GestureDetector(
-                                    onTap: () => Navigator.pushNamed(
-                                        context, '/diagonal_demo'),
                                     child: Container(
                                       color: kSecondaryColor,
                                       width: size.width,
@@ -81,7 +80,7 @@ class LoginView extends StatelessWidget {
                                   child: Text(
                                     "Log-in",
                                     style: TextStyle(
-                                        color: ProjectColors.fixColor,
+                                        color: kTextColor,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 38.0),
                                   ),
@@ -98,11 +97,11 @@ class LoginView extends StatelessWidget {
                                         style: TextStyle(
                                             fontSize: 19.0,
                                             fontWeight: FontWeight.bold,
-                                            color: ProjectColors.fixColor),
+                                            color: kTextColor),
                                       ),
                                       TextFormField(
                                         controller: lp.emailcontroller,
-                                        cursorColor: ProjectColors.fixColor,
+                                        cursorColor: kTextColor,
                                         decoration: InputDecoration(
                                             enabledBorder:
                                                 const UnderlineInputBorder(
@@ -110,9 +109,8 @@ class LoginView extends StatelessWidget {
                                                   color: Colors.grey),
                                             ),
                                             focusedBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color:
-                                                      ProjectColors.fixColor),
+                                              borderSide:
+                                                  BorderSide(color: kTextColor),
                                             ),
                                             hintText: "Your email"),
                                         validator: (value) {
@@ -140,11 +138,11 @@ class LoginView extends StatelessWidget {
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 19.0,
-                                              color: ProjectColors.fixColor),
+                                              color: kTextColor),
                                         ),
                                         TextFormField(
                                           controller: lp.passwordcontroller,
-                                          cursorColor: ProjectColors.fixColor,
+                                          cursorColor: kTextColor,
                                           validator: (value) {
                                             if (value == null ||
                                                 value.isEmpty) {
@@ -162,9 +160,8 @@ class LoginView extends StatelessWidget {
                                                   color: Colors.grey),
                                             ),
                                             focusedBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color:
-                                                      ProjectColors.fixColor),
+                                              borderSide:
+                                                  BorderSide(color: kTextColor),
                                             ),
                                             hintText: "Password",
                                             suffixIcon: IconButton(
@@ -195,12 +192,9 @@ class LoginView extends StatelessWidget {
                                     child: TextButton(
                                         onPressed: () {
                                           Navigator.push<void>(
-                                            context,
-                                            MaterialPageRoute<void>(
-                                              builder: (BuildContext context) =>
-                                                  const ForgotPassword(),
-                                            ),
-                                          );
+                                              context,
+                                              BouncyPageRoute(
+                                                  widget: ForgotPassword()));
                                         },
                                         child: const Text(
                                           "Forgot password?",
@@ -240,12 +234,9 @@ class LoginView extends StatelessWidget {
                                   child: TextButton(
                                       onPressed: (() {
                                         Navigator.push<void>(
-                                          context,
-                                          MaterialPageRoute<void>(
-                                            builder: (BuildContext context) =>
-                                                const RegisterView(),
-                                          ),
-                                        );
+                                            context,
+                                            BouncyPageRoute(
+                                                widget: RegisterView()));
                                       }),
                                       child: const Text(
                                         "Don't have an account? Sign-up",
