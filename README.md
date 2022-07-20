@@ -1,16 +1,29 @@
-# se_to_do
 
-A new Flutter project.
+# NOTE-TASK APP
 
-## Getting Started
+## About
+### 
+This app is a note or task app made with Flutter. Database operations are performed with Firebase. I used provider for scene management. Progress is shown according to the completion of each user's tasks. Notes can also be edited and deleted.
+It is an easy and understandable application.
+# Used technologies
+## Firebase 
+- Authentication
+- Cloud firestore
 
-This project is a starting point for a Flutter application.
+## State Management
+-  Provider
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/root.png">  <img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/register.png">  
+<img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/login.png"> <img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/password.png">
+
+ 
+
+ <img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/home.png"> <img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/detail.png">
+<img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/task.png">
+
+ 
+
+
+
