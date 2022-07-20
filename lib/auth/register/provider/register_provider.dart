@@ -2,10 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/auth/login/view/login_view.dart';
+import 'package:se_to_do/style/colors.dart';
 import 'package:se_to_do/widget/animation.dart';
 import 'package:se_to_do/widget/snackbar_widget.dart';
 
-import '../../../utils/const.dart';
+
 
 class RegisterProvider extends ChangeNotifier {
   BuildContext context;

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/model/task_color.dart';
 import 'package:se_to_do/model/to_do_model.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/colors.dart';
 import 'package:se_to_do/widget/snackbar_widget.dart';
 
 class HomeProvider extends ChangeNotifier {

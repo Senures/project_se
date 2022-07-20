@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.se_to_do">
+    package="com.se.se_to_do">
    <application
         android:label="Taskez"
         android:name="${applicationName}"

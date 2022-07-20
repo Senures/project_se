@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:se_to_do/model/to_do_model.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/colors.dart';
 import 'package:se_to_do/widget/circularprogress.dart';
 import 'package:se_to_do/widget/color_utils.dart';
 import 'package:se_to_do/widget/fab_buton.dart';
@@ -27,7 +27,7 @@ class DetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    //var size = MediaQuery.of(context).size;
     return ChangeNotifierProvider<DetailProvider>(
         create: (context) => DetailProvider(todoId, context),
         builder: (context, child) {
@@ -76,7 +76,6 @@ class DetailView extends StatelessWidget {
                                   child: SleekCircularSlider(
                                     min: 0,
                                     max: 100,
-                                    onChangeEnd: (value) {},
                                     appearance: CircularSliderAppearance(
                                         animationEnabled: false,
                                         customColors: CustomSliderColors(
@@ -115,10 +114,12 @@ class DetailView extends StatelessWidget {
                           dp.tasklist.isNotEmpty
                               ? dp.isLoading
                                   ? const LoadingCircular()
-                                  : TaskList(
-                                      todoId: todoId,
-                                      model: model,
-                                      dp: dp,
+                                  : Expanded(
+                                      child: TaskList(
+                                        todoId: todoId,
+                                        model: model,
+                                        dp: dp,
+                                      ),
                                     )
                               : const Expanded(
                                   child: Center(

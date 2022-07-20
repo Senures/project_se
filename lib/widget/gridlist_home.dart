@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:se_to_do/detail/view/detail_view.dart';
 import 'package:se_to_do/home/provider/home_provider.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/colors.dart';
 import 'package:se_to_do/widget/animation.dart';
 import 'package:se_to_do/widget/color_circle.dart';
 import 'package:se_to_do/widget/color_utils.dart';

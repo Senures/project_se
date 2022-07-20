@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:se_to_do/detail/provider/detail_provider.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/app_text.dart';
+import 'package:se_to_do/style/app_textstyle.dart';
+import 'package:se_to_do/style/colors.dart';
+import 'package:se_to_do/style/image.dart';
+
 
 editDialog(BuildContext context, DetailProvider dp, int i) {
   dp.dialogInit(dp.tasklist[i].task!);

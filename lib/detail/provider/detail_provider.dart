@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:se_to_do/model/task_model.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/colors.dart';
 import 'package:se_to_do/widget/snackbar_widget.dart';
 
 class DetailProvider extends ChangeNotifier {
@@ -29,6 +29,7 @@ class DetailProvider extends ChangeNotifier {
     getTaskCollection();
   }
 
+//firebasede task collectionu oluşturduk
   createTaskCollection() async {
     tasklist.clear();
     var tasks = FirebaseFirestore.instance
@@ -49,7 +50,7 @@ class DetailProvider extends ChangeNotifier {
     taskcontroller!.clear();
     Navigator.pop(context);
   }
-
+//firebasedeki task koleksiyonunu çağırdık
   getTaskCollection() async {
     tasklist.clear();
     isLoading = true;
@@ -78,10 +79,10 @@ class DetailProvider extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     });
-    isLoading = false;
-    notifyListeners();
+     isLoading = false;
+    notifyListeners(); 
   }
-
+//görevin yapılıp yapılmadıgı
   taskStatus(String taskId, bool ontap) async {
     tasklist.clear();
     var taskStatus = FirebaseFirestore.instance
@@ -98,22 +99,22 @@ class DetailProvider extends ChangeNotifier {
     //firebasedeki tıklan
   }
 
+  //görev oluşturma işlemi
   createTask() {
     if (taskcontroller!.text.isNotEmpty) {
       createTaskCollection();
     } else {
-      snackBarCustom(context, "Please fill in completely!",
-         kPrimaryColor, 3);
+      snackBarCustom(context, "Please fill in completely!", kPrimaryColor, 3);
     }
     notifyListeners();
   }
 
+//görev düzenleme işlemi
   editTask(String taskId) {
     if (editcontroller!.text.isNotEmpty) {
       updateTask(taskId);
     } else {
-      snackBarCustom(context, "Please fill in completely!",
-       kPrimaryColor, 3);
+      snackBarCustom(context, "Please fill in completely!", kPrimaryColor, 3);
     }
     notifyListeners();
   }
@@ -121,7 +122,8 @@ class DetailProvider extends ChangeNotifier {
   dialogInit(String task) {
     editcontroller = TextEditingController(text: task);
   }
-
+  
+//görevi düzenlediğine güncelleme
   updateTask(String taskId) {
     var newTask = FirebaseFirestore.instance
         .collection("users")
@@ -133,7 +135,7 @@ class DetailProvider extends ChangeNotifier {
     newTask.update({"task": editcontroller!.text});
     notifyListeners();
   }
-
+//todo silme
   deleteToDo(String todoId) async {
     await FirebaseFirestore.instance
         .collection('users')
@@ -144,7 +146,7 @@ class DetailProvider extends ChangeNotifier {
     Navigator.pop(context);
     notifyListeners();
   }
-
+//görev silme
   deleteTask(String taskId) async {
     await FirebaseFirestore.instance
         .collection('users')
@@ -154,8 +156,5 @@ class DetailProvider extends ChangeNotifier {
         .collection("tasks")
         .doc(taskId)
         .delete();
-
-    
   }
-
 }

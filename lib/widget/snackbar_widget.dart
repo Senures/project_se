@@ -1,6 +1,7 @@
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/app_textstyle.dart';
+
 
 snackBarCustom(BuildContext context, String text, Color color, int second) {
   showFlash(

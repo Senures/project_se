@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/colors.dart';
+
 
 // ignore: must_be_immutable
 class DialogTextForm extends StatelessWidget {
   TextEditingController? controller;
   int? maxLength;
   
-  DialogTextForm(this.controller, {Key? key, this.maxLength}) : super(key: key);
+  DialogTextForm(this.controller,  {this.maxLength});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
    
-      maxLength: 15,
+      maxLength: maxLength,
       controller: controller,
       cursorColor: kTextColor,
       decoration: InputDecoration(

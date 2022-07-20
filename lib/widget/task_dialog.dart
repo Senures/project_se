@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:se_to_do/detail/provider/detail_provider.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/app_text.dart';
+import 'package:se_to_do/style/app_textstyle.dart';
+import 'package:se_to_do/style/image.dart';
 import 'package:se_to_do/widget/dialog_textformfield.dart';
 
 taskDialog(BuildContext context, DetailProvider dp) {
@@ -27,7 +29,7 @@ taskDialog(BuildContext context, DetailProvider dp) {
                         alignment: Alignment.center,
                         width: size.width,
                         child: Image.asset(
-                        logoImg,
+                          logoImg,
                           width: 40.0,
                         ),
                       ),
@@ -37,10 +39,7 @@ taskDialog(BuildContext context, DetailProvider dp) {
                       child: Text(ProjectText.enterTask,
                           style: ProjectTextStyles.titledialog),
                     ),
-                    DialogTextForm(
-                      dp.taskcontroller,
-                      maxLength: 100,
-                    )
+                    DialogTextForm(dp.taskcontroller,)
                   ],
                 ),
               );

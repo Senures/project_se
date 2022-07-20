@@ -2,9 +2,12 @@ import 'package:clippy_flutter/diagonal.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/app_text.dart';
+import 'package:se_to_do/style/app_textstyle.dart';
+import 'package:se_to_do/style/colors.dart';
 import 'package:se_to_do/widget/circularprogress.dart';
 
+import '../../../style/image.dart';
 import '../provider/register_provider.dart';
 
 class RegisterView extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:se_to_do/detail/provider/detail_provider.dart';
 import 'package:se_to_do/model/to_do_model.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/colors.dart';
 import 'package:se_to_do/widget/edit_dialog.dart';
 
 // ignore: must_be_immutable
@@ -19,7 +19,6 @@ class TaskList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        primary: false,
         shrinkWrap: true,
         itemCount: dp.tasklist.length,
         itemBuilder: (context, i) {

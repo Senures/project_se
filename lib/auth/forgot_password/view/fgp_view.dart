@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:se_to_do/auth/forgot_password/provider/fgp_provider.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/app_textstyle.dart';
+import 'package:se_to_do/style/colors.dart';
+
+
+import '../../../style/image.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({Key? key}) : super(key: key);

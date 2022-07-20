@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/home/view/home_view.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/colors.dart';
+
 import 'package:se_to_do/widget/animation.dart';
-import 'package:se_to_do/widget/custom_snackbar.dart';
+
 import 'package:se_to_do/widget/snackbar_widget.dart';
 
 class LoginProvider with ChangeNotifier {

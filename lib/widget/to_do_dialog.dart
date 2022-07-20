@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/app_text.dart';
+import 'package:se_to_do/style/app_textstyle.dart';
 import 'package:se_to_do/widget/dialog_textformfield.dart';
 
 import '../home/provider/home_provider.dart';
+import '../style/image.dart';
 
 toDocreateDialog(BuildContext context, HomeProvider hp) {
   var size = MediaQuery.of(context).size;
-/* 
-  hp.categoryname!.clear();
-  hp.todoColor = '';
- */
   showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -30,7 +28,7 @@ toDocreateDialog(BuildContext context, HomeProvider hp) {
                       alignment: Alignment.center,
                       width: size.width,
                       child: Image.asset(
-                       logoImg,
+                        logoImg,
                         width: 40.0,
                       ),
                     ),

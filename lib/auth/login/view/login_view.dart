@@ -5,9 +5,13 @@ import 'package:provider/provider.dart';
 import 'package:se_to_do/auth/login/provider/login_provider.dart';
 import 'package:se_to_do/auth/register/view/register_view.dart';
 import 'package:se_to_do/auth/forgot_password/view/fgp_view.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/app_text.dart';
+import 'package:se_to_do/style/app_textstyle.dart';
+import 'package:se_to_do/style/colors.dart';
 import 'package:se_to_do/widget/animation.dart';
 import 'package:se_to_do/widget/circularprogress.dart';
+
+import '../../../style/image.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);

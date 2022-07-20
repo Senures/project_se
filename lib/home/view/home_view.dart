@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:se_to_do/splash_screen.dart';
-import 'package:se_to_do/utils/const.dart';
 import 'package:se_to_do/widget/circularprogress.dart';
 import 'package:se_to_do/widget/fab_buton.dart';
 import 'package:se_to_do/widget/gridlist_home.dart';
 import 'package:se_to_do/widget/to_do_dialog.dart';
+import '../../style/colors.dart';
+import '../../style/image.dart';
 import '../provider/home_provider.dart';
 
 class HomeView extends StatelessWidget {
@@ -22,7 +23,6 @@ class HomeView extends StatelessWidget {
         builder: (context, child) {
           return Consumer<HomeProvider>(builder: (context, hp, child) {
             return Scaffold(
-                // backgroundColor: ProjectColors.kBdarkPurple,
                 body: hp.isLoading
                     ? const LoadingCircular()
                     : SafeArea(
@@ -71,8 +71,6 @@ class HomeView extends StatelessWidget {
                                       ),
                                       Container(
                                         width: size.width * 0.6,
-                                        //height: size.height * 0.03,
-                                        //color: Colors.white,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,

@@ -2,7 +2,8 @@ import 'package:clippy_flutter/clippy_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:se_to_do/auth/login/view/login_view.dart';
 import 'package:se_to_do/auth/register/view/register_view.dart';
-import 'package:se_to_do/utils/const.dart';
+import 'package:se_to_do/style/colors.dart';
+import 'package:se_to_do/style/image.dart';
 import 'package:se_to_do/widget/animation.dart';
 
 class RootPageView extends StatelessWidget {
