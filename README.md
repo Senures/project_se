@@ -15,13 +15,16 @@ It is an easy and understandable application.
 
 
 
-<img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/root.png">  <img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/register.png">  
-<img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/login.png"> <img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/password.png">
+<img width="250" src="https://github.com/Senures/project_se/blob/main/app-ss/root.png"> <img width="250" src="https://github.com/Senures/project_se/blob/main/app-ss/register.png"> <img width="250" src="https://github.com/Senures/project_se/blob/main/app-ss/login.png"> 
+
+
+<img width="250" src="https://github.com/Senures/project_se/blob/main/app-ss/password.png"> <img width="250" src="https://github.com/Senures/project_se/blob/main/app-ss/home.png">
 
  
 
- <img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/home.png"> <img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/detail.png">
-<img width="250" src="https://github.com/Senures/project_se/blob/main/taskez/task.png">
+ 
+ <img width="250" src="https://github.com/Senures/project_se/blob/main/app-ss/detail.png"> <img width="250" src="https://github.com/Senures/project_se/blob/main/app-ss/task.png">
+
 
  
 
