@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:se_to_do/detail/provider/detail_provider.dart';
-import 'package:se_to_do/style/app_text.dart';
-import 'package:se_to_do/style/app_textstyle.dart';
-import 'package:se_to_do/style/image.dart';
+import 'package:se_to_do/core/extensions/context_extension.dart';
+import 'package:se_to_do/core/style/app_text.dart';
+import 'package:se_to_do/core/style/app_textstyle.dart';
+import 'package:se_to_do/core/style/image.dart';
 import 'package:se_to_do/widget/dialog_textformfield.dart';
 
+import '../pages/detail/provider/detail_provider.dart';
+
 taskDialog(BuildContext context, DetailProvider dp) {
-  var size = MediaQuery.of(context).size;
   showDialog<bool>(
       context: context,
       builder: (BuildContext context) {
@@ -18,7 +19,7 @@ taskDialog(BuildContext context, DetailProvider dp) {
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 15.0),
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                width: size.width,
+                width: context.width,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +28,7 @@ taskDialog(BuildContext context, DetailProvider dp) {
                       padding: const EdgeInsets.symmetric(vertical: 15.0),
                       child: Container(
                         alignment: Alignment.center,
-                        width: size.width,
+                        width: context.width,
                         child: Image.asset(
                           logoImg,
                           width: 40.0,
@@ -39,7 +40,9 @@ taskDialog(BuildContext context, DetailProvider dp) {
                       child: Text(ProjectText.enterTask,
                           style: ProjectTextStyles.titledialog),
                     ),
-                    DialogTextForm(dp.taskcontroller,)
+                    DialogTextForm(
+                      dp.taskcontroller,
+                    )
                   ],
                 ),
               );
@@ -47,22 +50,16 @@ taskDialog(BuildContext context, DetailProvider dp) {
           ),
           actions: [
             TextButton(
-                onPressed: (() {
-                  Navigator.pop(context, false);
-                }),
+                onPressed: () => context.toPageBack(),
                 child: Text(
                   ProjectText.cancel,
                   style: ProjectTextStyles.cancelStyle,
                 )),
             TextButton(
-                onPressed: (() {
-                  dp.createTask();
-                }),
+                onPressed: () => dp.createTask(),
                 child: Text(ProjectText.create,
                     style: ProjectTextStyles.createStyle))
           ],
         );
-      }).then((value) {
-    if (value == false) {}
-  });
+      }).then((value) {});
 }

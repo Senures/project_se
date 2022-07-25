@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:se_to_do/detail/view/detail_view.dart';
-import 'package:se_to_do/home/provider/home_provider.dart';
-import 'package:se_to_do/style/colors.dart';
-import 'package:se_to_do/widget/animation.dart';
+import 'package:se_to_do/core/extensions/context_extension.dart';
+import 'package:se_to_do/core/style/colors.dart';
+import 'package:se_to_do/pages/detail/view/detail_view.dart';
+import 'package:se_to_do/pages/home/provider/home_provider.dart';
 import 'package:se_to_do/widget/color_circle.dart';
 import 'package:se_to_do/widget/color_utils.dart';
 
@@ -24,15 +24,13 @@ class GridListHome extends StatelessWidget {
         itemBuilder: (BuildContext ctx, index) {
           return InkWell(
             onTap: () {
-              Navigator.push<void>(
-                  context,
-                  BouncyPageRoute(
-                    widget: DetailView(
-                      todoId: hp.todolist[index].todoId!,
-                      model: hp.todolist[index],
-                      todolist: hp.todolist,
-                    ),
-                  ));
+              context.toPage(
+                DetailView(
+                  todoId: hp.todolist[index].todoId!,
+                  model: hp.todolist[index],
+                  todolist: hp.todolist,
+                ),
+              );
             },
             child: Container(
                 margin: const EdgeInsets.all(10.0),

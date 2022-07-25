@@ -14,10 +14,7 @@ class ColorCircle extends StatelessWidget {
         color: Colors.white,
         border: Border.all(
             color: color,
-            /*    color: hp
-                                                            .taskColor[index]
-                                                            .colors, */
-            width: 7.0),
+          width: 7.0),
         shape: BoxShape.circle,
       ),
     );

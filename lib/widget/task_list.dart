@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:se_to_do/detail/provider/detail_provider.dart';
-import 'package:se_to_do/model/to_do_model.dart';
-import 'package:se_to_do/style/colors.dart';
+import 'package:se_to_do/core/model/to_do_model.dart';
+import 'package:se_to_do/core/style/colors.dart';
+import 'package:se_to_do/pages/detail/provider/detail_provider.dart';
 import 'package:se_to_do/widget/edit_dialog.dart';
 
 // ignore: must_be_immutable
@@ -12,9 +12,12 @@ class TaskList extends StatelessWidget {
   TodoModel model;
   DetailProvider dp;
 
-  TaskList(
-      {Key? key, required this.todoId, required this.model, required this.dp})
-      : super(key: key);
+  TaskList({
+    Key? key,
+    required this.todoId,
+    required this.model,
+    required this.dp,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

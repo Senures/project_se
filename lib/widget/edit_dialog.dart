@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:se_to_do/detail/provider/detail_provider.dart';
-import 'package:se_to_do/style/app_text.dart';
-import 'package:se_to_do/style/app_textstyle.dart';
-import 'package:se_to_do/style/colors.dart';
-import 'package:se_to_do/style/image.dart';
+import 'package:se_to_do/core/extensions/context_extension.dart';
+import 'package:se_to_do/core/style/app_text.dart';
+import 'package:se_to_do/core/style/app_textstyle.dart';
+import 'package:se_to_do/core/style/colors.dart';
+import 'package:se_to_do/core/style/image.dart';
 
+import 'package:se_to_do/pages/detail/provider/detail_provider.dart';
 
 editDialog(BuildContext context, DetailProvider dp, int i) {
   dp.dialogInit(dp.tasklist[i].task!);
@@ -31,7 +32,7 @@ editDialog(BuildContext context, DetailProvider dp, int i) {
                         alignment: Alignment.center,
                         width: size.width,
                         child: Image.asset(
-                         logoImg,
+                          logoImg,
                           width: 40.0,
                         ),
                       ),
@@ -42,24 +43,17 @@ editDialog(BuildContext context, DetailProvider dp, int i) {
                           style: ProjectTextStyles.titledialog),
                     ),
                     TextFormField(
-                      //maxLength: 15,
-                      /*      onChanged: (value) {
-                        dp.value = value;
-                      }, */
                       controller: dp.editcontroller,
-
-                      //  controller: dp.editcontroller,
                       cursorColor: kTextColor,
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 1, color: kBorderColor),
+                            borderSide:
+                                BorderSide(width: 1, color: kBorderColor),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 1, color: kTextColor),
+                            borderSide: BorderSide(width: 1, color: kTextColor),
                             borderRadius: BorderRadius.circular(10),
                           )),
                     )
@@ -70,9 +64,7 @@ editDialog(BuildContext context, DetailProvider dp, int i) {
           ),
           actions: [
             TextButton(
-                onPressed: (() {
-                  Navigator.pop(context, false);
-                }),
+                onPressed: () => context.toPageBack(),
                 child: Text(
                   ProjectText.cancel,
                   style: ProjectTextStyles.cancelStyle,
@@ -80,14 +72,13 @@ editDialog(BuildContext context, DetailProvider dp, int i) {
             TextButton(
                 onPressed: (() {
                   dp.editTask(dp.tasklist[i].taskId);
-                  // dp.editTask(dp.tasklist[i].taskId);
-                  Navigator.pop(context);
+                  context.toPageBack();
                 }),
                 child: Text(ProjectText.create,
                     style: ProjectTextStyles.createStyle))
           ],
         );
       }).then((value) {
-    if (value == false) {}
+    //tıklandığını anlamak için
   });
 }

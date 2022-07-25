@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:se_to_do/style/app_text.dart';
-import 'package:se_to_do/style/app_textstyle.dart';
+import 'package:se_to_do/core/extensions/context_extension.dart';
+import 'package:se_to_do/core/extensions/widget_helper_extension.dart';
+import 'package:se_to_do/core/style/app_text.dart';
+import 'package:se_to_do/core/style/app_textstyle.dart';
+import 'package:se_to_do/core/style/image.dart';
+import 'package:se_to_do/pages/home/provider/home_provider.dart';
 import 'package:se_to_do/widget/dialog_textformfield.dart';
 
-import '../home/provider/home_provider.dart';
-import '../style/image.dart';
-
 toDocreateDialog(BuildContext context, HomeProvider hp) {
-  var size = MediaQuery.of(context).size;
   showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -19,24 +19,23 @@ toDocreateDialog(BuildContext context, HomeProvider hp) {
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 15.0),
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                width: size.width,
+                width: context.width,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      width: size.width,
+                      width: context.width,
                       child: Image.asset(
                         logoImg,
                         width: 40.0,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Text(ProjectText.categoryname,
-                          style: ProjectTextStyles.titledialog),
-                    ),
+                    Text(
+                      ProjectText.categoryname,
+                      style: ProjectTextStyles.titledialog,
+                    ).paddingSymmetric(vertical: 10.0),
                     DialogTextForm(hp.categoryname, maxLength: 15),
                     Container(
                       alignment: Alignment.center,
@@ -78,15 +77,11 @@ toDocreateDialog(BuildContext context, HomeProvider hp) {
           ),
           actions: [
             TextButton(
-                onPressed: (() {
-                  Navigator.pop(context);
-                }),
+                onPressed: () => context.toPageBack(),
                 child: Text(ProjectText.cancel,
                     style: ProjectTextStyles.cancelStyle)),
             TextButton(
-                onPressed: (() {
-                  hp.createToDo(context);
-                }),
+                onPressed: () => hp.createToDo(context),
                 child: Text(ProjectText.create,
                     style: ProjectTextStyles.createStyle))
           ],

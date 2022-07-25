@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:se_to_do/style/colors.dart';
+import 'package:se_to_do/core/style/colors.dart';
+
 
 
 // ignore: must_be_immutable

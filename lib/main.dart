@@ -1,58 +1,39 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:se_to_do/splash_screen.dart';
+import 'package:se_to_do/core/style/colors.dart';
+import 'package:se_to_do/pages/splash_screen/splash_screen.dart';
 
 
-Future<void> _messageHandler(RemoteMessage message) async {
-
-}
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_messageHandler);
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  late FirebaseMessaging messaging;
-  @override
-  void initState() {
-    super.initState();
-    messaging = FirebaseMessaging.instance;
-    messaging.getToken().then((value) {
-     
-    });
-     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
-      
-    });
-    FirebaseMessaging.onMessageOpenedApp.listen((message) {
-   
-    });
-  }
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Taskez',
       theme: ThemeData(
-        textTheme: GoogleFonts.alatsiTextTheme(
-          Theme.of(context).textTheme,
-        ),
-        useMaterial3: true,
-        primarySwatch: Colors.blue,
-      ),
+          textTheme: GoogleFonts.alatsiTextTheme(
+            Theme.of(context).textTheme,
+          ),
+          useMaterial3: true,
+          primarySwatch: Colors.blue,
+          inputDecorationTheme: InputDecorationTheme(
+            enabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: kTextColor),
+            ),
+          )),
       home: const SplashScreen(),
     );
   }
